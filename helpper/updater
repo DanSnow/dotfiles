@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+# encoding: UTF-8
+
+require 'fileutils'
+
+Dir.chdir '..'
+Dir.glob('.*') do |file|
+  next if File.directory? file
+  FileUtils.cp "#{File.join ENV['HOME'], file}", '.'
+  puts "Update #{file}"
+end
+
+# vim: ft=ruby
