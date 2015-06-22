@@ -1,0 +1,29 @@
+[credential]
+	helper = cache --timeout=3600
+[color]
+	ui = true
+[core]
+	editor = vim
+[push]
+	default = simple
+[alias]
+	gr = log --graph --oneline --decorate
+  co = checkout
+  cob = checkout -b
+  br = branch -v
+  brs = branch -av
+  st = status
+  di = diff
+  dic = diff --cached
+  dt = difftool
+  dtc = difftool --cached
+  cached = diff --cached
+  ci = commit
+  cim = commit -m
+  unstage = reset HEAD
+  amend = commit --amend
+  uncommit = reset --soft HEAD^
+  update = add -u
+  u = add -u
+[diff]
+	tool = meld

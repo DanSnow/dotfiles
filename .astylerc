@@ -1,0 +1,5 @@
+style=google #-A2
+indent=spaces=2 # -s2
+indent-preprocessor # -w
+pad-oper # -p
+suffix=none # -n
