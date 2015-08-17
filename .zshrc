@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="steeef"
+export ZSH_THEME="steeef"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -40,13 +40,12 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras git-flow command-not-found ruby gitignore ant coffee zsh_reload gem bundler rail encode64 vundle bower npm composer)
+plugins=(git git-extras git-flow command-not-found ruby gitignore ant coffee zsh_reload gem bundler rail encode64 vundle bower npm composer nvm)
 
 source "$ZSH/oh-my-zsh.sh"
 # Customize to your needs...
 
-set -o vi
-bindkey -v
+bindkey -e
 export KEYTIMEOUT=2
 
 autoload -U compinit promptinit zcalc zsh-mime-setup
@@ -54,12 +53,17 @@ compinit
 promptinit
 zsh-mime-setup
 
-export PATH="$PATH:$HOME/bin:$HOME/sdk/android-sdk/tools:$HOME/genymotion"
+export ANDROID_HOME="$HOME/sdk/android-sdk"
+export GOPATH="$HOME/.go"
+export SCALA_HOME="/usr/local/scala"
+
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/genymotion"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/sdk/android-sdk/tools"
 export PATH="$PATH:$HOME/.linuxbrew/bin"
-export ANDROID_HOME="$HOME/sdk/android-sdk"
-export GOPATH="$HOME/.go"
+export PATH="$PATH:$SCALA_HOME/bin"
+
 export GCC_COLORS="auto"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -119,7 +123,9 @@ setopt ZLE
 
 setopt NO_HUP
 
-setopt VI
+# setopt VI
+
+unsetopt nomatch
 
 # only fools wouldn't do this ;-)
 export EDITOR="vim"
@@ -136,6 +142,7 @@ limit coredumpsize 0
 
 bindkey "\e[3~" delete-char
 
+#以下字符视为单词的一部分
 WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 
 # why would you type 'cd dir' if you could just type 'dir'?
@@ -149,8 +156,8 @@ setopt MENU_COMPLETE
 #compinit
 
 # Completion caching
-zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path .zcache
+# zstyle ':completion::complete:*' use-cache on
+# zstyle ':completion::complete:*' cache-path .zcache
 #zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 #Completion Options
@@ -168,10 +175,10 @@ zstyle ':completion::complete:*' '\\'
 zstyle ':completion:*:*:*:default' menu yes select
 zstyle ':completion:*:*:default' force-list always
 
-[ -f /etc/DIR_COLORS ] && eval $(dircolors -b /etc/DIR_COLORS)
+[ -f '/etc/DIR_COLORS' ] && eval "$(dircolors -b '/etc/DIR_COLORS')"
 export ZLSCOLORS="${LS_COLORS}"
 zmodload zsh/complist
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 zstyle ':completion:*' completer _complete _match _approximate
@@ -181,7 +188,7 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 compdef pkill=kill
 compdef pkill=killall
 zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:processes' command 'ps -au$USER'
+zstyle ':completion:*:processes' command "ps -au $USER"
 
 # Group matches and Describe
 zstyle ':completion:*:matches' group 'yes'
@@ -217,8 +224,11 @@ alias cls='clear'
 alias ch='clear && cd'
 alias :q='exit' # because I often mis-type :p
 alias tmux='TERM=xterm-256color tmux'
+alias gr='[ ! -z `git rev-parse --show-toplevel`  ] && cd `git rev-parse --show-toplevel || pwd`'
+alias rm='trash'
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [[ "$TERM" == "dumb" ]]; then
