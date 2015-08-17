@@ -175,7 +175,8 @@ zstyle ':completion::complete:*' '\\'
 zstyle ':completion:*:*:*:default' menu yes select
 zstyle ':completion:*:*:default' force-list always
 
-[ -f '/etc/DIR_COLORS' ] && eval "$(dircolors -b '/etc/DIR_COLORS')"
+# [ -f '/etc/DIR_COLORS' ] && eval "$(dircolors -b '/etc/DIR_COLORS')"
+eval "$(dircolors)"
 export ZLSCOLORS="${LS_COLORS}"
 zmodload zsh/complist
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
