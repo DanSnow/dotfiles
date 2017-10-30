@@ -25,5 +25,6 @@
   uncommit = reset --soft HEAD^
   update = add -u
   u = add -u
+  up = pull --rebase --autostash
 [diff]
 	tool = meld
