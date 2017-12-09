@@ -40,7 +40,11 @@ export ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras git-flow command-not-found ruby gitignore ant coffee zsh_reload gem bundler rail encode64 vundle bower npm composer nvm)
+plugins=(git git-extras git-flow
+  command-not-found ruby gitignore
+  zsh_reload gem bundler rail encode64
+  cargo gradle golang pass redis-cli systemd ubuntu rust tmux yarn laravel laravel5
+  vundle bower npm composer zsh-completions)
 
 source "$ZSH/oh-my-zsh.sh"
 # Customize to your needs...
@@ -54,11 +58,12 @@ promptinit
 zsh-mime-setup
 
 export ANDROID_HOME="$HOME/sdk/android-sdk"
-export GOPATH="$HOME/.go"
+export GOPATH="$HOME/go"
 export SCALA_HOME="/usr/local/scala"
 
 export PATH="$PATH:$HOME/bin"
-export PATH="$PATH:$HOME/genymotion"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/sdk/android-sdk/tools"
 export PATH="$PATH:$HOME/.linuxbrew/bin"
@@ -252,19 +257,6 @@ else
   export LANGUAGE=en
 fi
 
-# Auto attach tmux
-# if [[ "$TERM" != "screen" ]]; then
-#   tmux attach
-# fi
-
-function mp42mp3 {
-  name=$1
-  avconv -i "$name" -vn "${name%.mp4}.mp3"
-}
-
 cls
 
-# BEGIN Ruboto setup
-source ~/.rubotorc
-# END Ruboto setup
 
