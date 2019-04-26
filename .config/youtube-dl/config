@@ -1,2 +1,2 @@
--f best[height=720]
+-f "best[height <= 720]"
 -o %(title)s.%(ext)s

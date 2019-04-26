@@ -40,11 +40,11 @@ export ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras git-flow
+plugins=(git git-extras fd cp
   command-not-found ruby gitignore
-  zsh_reload gem bundler rail encode64
+  zsh_reload gem bundler encode64 pip jump
   cargo gradle golang pass redis-cli systemd ubuntu rust tmux yarn laravel laravel5
-  vundle bower npm composer zsh-completions)
+  bower npm composer history-substring-search zsh-completions)
 
 source "$ZSH/oh-my-zsh.sh"
 # Customize to your needs...
@@ -52,7 +52,7 @@ source "$ZSH/oh-my-zsh.sh"
 bindkey -e
 export KEYTIMEOUT=2
 
-autoload -U compinit promptinit zcalc zsh-mime-setup
+autoload -U compinit promptinit zcalc zsh-mime-setup zmv
 compinit
 promptinit
 zsh-mime-setup
@@ -65,11 +65,13 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/sdk/android-sdk/tools"
-export PATH="$PATH:$HOME/.linuxbrew/bin"
 export PATH="$PATH:$SCALA_HOME/bin"
+export PATH="$PATH:$(yarn global bin)"
 
+export BROWSER="vivaldi"
 export GCC_COLORS="auto"
+export ELECTRON_TRASH='gio'
+export SKIM_DEFAULT_COMMAND='fd --type f'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Setup zsh-autosuggestions
@@ -147,7 +149,7 @@ limit coredumpsize 0
 
 bindkey "\e[3~" delete-char
 
-#以下字符视为单词的一部分
+# A word
 WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 
 # why would you type 'cd dir' if you could just type 'dir'?
@@ -223,8 +225,10 @@ sudo-command-line() {
 zle -N sudo-command-line
 bindkey "\e\e" sudo-command-line
 
-alias ls='ls -F --color=auto'
-alias ll='ls -l'
+zmodload zsh/terminfo
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
 alias grep='grep --color=auto'
 alias cls='clear'
 alias ch='clear && cd'
@@ -247,16 +251,37 @@ fi
 export HISTCONTROL="ignoredups ignorespace"
 
 #set LANG
-if [[ "$TERM" == "xterm" ]]; then
-  export LANG=zh_TW.utf8;
-  export LC_ALL=zh_TW.utf8;
+if [[ "$TERM" =~ "^xterm" ]]; then
+  export LANG='zh_TW.utf8'
+  export LC_ALL='zh_TW.utf8'
   export LANGUAGE='zh_TW:en'
 else
-  export LANG=en_US.utf8;
-  export LC_ALL=en_US.utf8;
-  export LANGUAGE=en
+  export LANG='en_US.utf8'
+  export LC_ALL='en_US.utf8'
+  export LANGUAGE='en'
 fi
+
+function mp42mp3 {
+  parallel ffmpeg -i "{}" -vn "{.}.mp3" ::: "$@"
+}
+
+function o {
+  xdg-open "$1" > /dev/null 2>&1 &!
+}
+
+source "$HOME/.cargo/env"
 
 cls
 
+# BEGIN Ruboto setup
+# source ~/.rubotorc
+# END Ruboto setup
 
+autoload -U bashcompinit && bashcompinit
+
+source <(gopass completion bash)
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/snow/.sdkman"
+[[ -s "/home/snow/.sdkman/bin/sdkman-init.sh" ]] && source "/home/snow/.sdkman/bin/sdkman-init.sh"
