@@ -9,6 +9,7 @@ fi
 
 if [ ! -d "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt" ]; then
   git clone "$SPACESHIP_THEME_URL" ~/.oh-my-zsh/custom/themes/spaceship-prompt
-  ln -s ~/.oh-my-zsh/custom/theme/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
+  ln -s ~/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme ~/.oh-my-zsh/custom/themes/spaceship.zsh-theme
 fi
 
+cp .zshrc ~
