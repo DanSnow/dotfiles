@@ -1,3 +1,4 @@
+# cat << "EOF" > /dev/null
 # https://github.com/gpakosz/.tmux
 # (‑●‑●)> dual licensed under the WTFPL v2 license and the MIT license,
 #         without any warranty.
@@ -257,38 +258,44 @@ set -g mouse on
 #set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
-set -gu prefix2
-unbind C-a
-unbind C-b
 set -g prefix C-a
-bind C-a send-prefix
 
 # move status line to top
 #set -g status-position top
-
-# Plugins
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
 
 ## Use C-Left C-Right for previous windows and next windows
 unbind C-Up
 unbind C-Down
 unbind C-Left
 unbind C-Right
-unbind p
-unbind n
 bind -nr C-Left previous-window
 bind -nr C-Right next-window
-
-bind v split-window -h
-bind h split-window -v
 
 bind C-e command-prompt -p "message?" "run-shell \"tmux list-windows -t $(tmux display -p '#S') | cut -d: -f1 |xargs -I{} tmux send-keys -t $(tmux display -p '#S'):{} '%1'\""
 
 ## Use a for renaming the window prompt.
 unbind ','
 bind ` command-prompt -I '#W' "rename-window '%%'"
-new -A -s main
-neww
-neww 'htop'
-select-window -t 1
+run "cut -c3- ~/.tmux.conf.local | sh -s _create_session"
+attach -t main
+
+# EOF
+#
+# set -e
+# # test if the session has windows
+# _is_closed(){
+#     sess="$1"
+#     ! tmux has -t "$sess"
+# }
+#
+# _create_session() {
+#   # either create it or attach to it
+#   if _is_closed main ; then
+#     tmux new -d -s main
+#     tmux neww
+#     tmux neww
+#     tmux neww 'htop'
+#     tmux selectw -t main:1
+#   fi
+# }
+# "$@"
