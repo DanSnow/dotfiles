@@ -5,7 +5,32 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-export ZSH_THEME="steeef"
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  package       # Package version
+  node          # Node.js section
+  ruby          # Ruby section
+  elixir        # Elixir section
+  swift         # Swift section
+  golang        # Go section
+  php           # PHP section
+  rust          # Rust section
+  venv          # virtualenv section
+  pyenv         # Pyenv section
+  exec_time     # Execution time
+  line_sep      # Line break
+  battery       # Battery level and status
+  vi_mode       # Vi-mode indicator
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+SPACESHIP_EXIT_CODE_SHOW='true'
+export ZSH_THEME="spaceship"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -40,15 +65,20 @@ export ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+
+MAGIC_ENTER_GIT_COMMAND="git status"
+MAGIC_ENTER_OTHER_COMMAND="lsd -F"
+
 plugins=(git git-extras fd cp
   command-not-found ruby gitignore
   zsh_reload gem bundler encode64 pip jump
   cargo gradle golang pass redis-cli systemd ubuntu rust tmux yarn laravel laravel5
-  bower npm composer history-substring-search zsh-completions)
+  bower npm composer magic-enter history-substring-search zsh-completions)
 
+export RPS1="%{$reset_color%}"
 source "$ZSH/oh-my-zsh.sh"
-# Customize to your needs...
 
+# Customize to your needs...
 bindkey -e
 export KEYTIMEOUT=2
 
@@ -64,7 +94,6 @@ export SCALA_HOME="/usr/local/scala"
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$SCALA_HOME/bin"
 export PATH="$PATH:$(yarn global bin)"
 
@@ -217,18 +246,15 @@ user-complete(){
 zle -N user-complete
 bindkey "\t" user-complete
 
-sudo-command-line() {
-    [[ -z $BUFFER ]] && zle up-history
-    [[ $BUFFER != sudo\ * ]] && BUFFER="sudo $BUFFER"
-    zle end-of-line
-}
-zle -N sudo-command-line
-bindkey "\e\e" sudo-command-line
-
 zmodload zsh/terminfo
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
+alias ls='lsd -F'
+alias ll='lsd -lF'
+alias l='lsd -lF'
+alias la='lsd -laF'
+alias lt='lsd --tree'
 alias grep='grep --color=auto'
 alias cls='clear'
 alias ch='clear && cd'
@@ -236,6 +262,7 @@ alias :q='exit' # because I often mis-type :p
 alias tmux='TERM=xterm-256color tmux'
 alias gr='[ ! -z `git rev-parse --show-toplevel`  ] && cd `git rev-parse --show-toplevel || pwd`'
 alias rm='trash'
+alias ipy="ipython3"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
@@ -268,6 +295,18 @@ function mp42mp3 {
 function o {
   xdg-open "$1" > /dev/null 2>&1 &!
 }
+
+function present {
+  PRESENT=1 zsh
+}
+
+function calc {
+  zcalc -e "$*"
+}
+
+if [[ ! -z "$PRESENT" ]]; then
+  PROMPT="$ "
+fi
 
 source "$HOME/.cargo/env"
 
