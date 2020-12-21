@@ -1,0 +1,3 @@
+# function yaml {
+  ruby -ryaml -rpry -e "Pry::ColorPrinter.pp YAML.safe_load(File.read('$1'))"
+# }
