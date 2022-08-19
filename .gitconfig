@@ -1,13 +1,17 @@
 [credential]
-	helper = cache --timeout=3600
+  helper = cache --timeout=3600
 [color]
-	ui = true
+  ui = true
 [core]
-	editor = vim
+  editor = commit-msg-editor
+  pager = delta
+[commit]
+  template = ~/.gitmessage
 [push]
-	default = simple
+  default = simple
+  followTags = true
 [alias]
-	gr = log --graph --oneline --decorate
+  gr = log --graph --oneline --decorate
   co = checkout
   cob = checkout -b
   br = branch -v
@@ -26,5 +30,55 @@
   update = add -u
   u = add -u
   up = pull --rebase --autostash
+  root = rev-parse --show-toplevel
+  hide = update-index --skip-worktree
+  unhide = update-index --no-skip-worktree
+  unhide-all = ls-files -v | grep -i ^S | cut -c 3- | xargs git update-index –no-skip-worktree
+  hidden = ! git ls-files -v | grep ‘^S’ | cut -c3-
+  stat = !git diff --stat $(git merge-base HEAD \"$REVIEW_BASE\")
 [diff]
-	tool = meld
+  tool = vimdiff
+[user]
+  signingkey = 2B25949174178EBD
+  email = dododavid006@gmail.com
+  name = DanSnow
+[pull]
+  rebase = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+[commit]
+  gpgsign = true
+; [pager]
+;   log  = diffr | less -R
+;   show = diffr | less -R
+;   diff = diffr | less -R
+[delta]
+  line-numbers = true
+  plus-color = "#012800"
+  minus-color = "#340001"
+  syntax-theme = Monokai Extended
+  features = side-by-side line-numbers; decorations
+  navigate = true
+[interactive]
+    diffFilter = delta --color-only
+
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+[help]
+  autocorrect = 0
+[merge]
+  tool = vimdiff
+[mergetool]
+  keepBackup = false
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true
