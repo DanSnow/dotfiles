@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+# Author: Brandon Mittman <brandonmittman@gmail.com>
+# Dependencies: imagemagick, grim (optional)
+set -o errexit -o noclobber -o nounset
+
+PREFIX="$(dirname "$0")"
+
+background="$HOME/Pictures/Flandre_Scarlet/FlandresScarlet245RED.png"
+hue=(-level "0%,100%,0.6")
+# default system sans-serif font
+font=$(convert -list font | awk "{ a[NR] = \$2 } /family: $(fc-match sans -f "%{family}\n")/ { print a[NR-1]; exit }")
+desktop=""
+swaylock_cmd=(swaylock)
+image=$(mktemp --suffix=.png)
+
+# Need these to capture multiple monitors' screenshots
+declare -a outputs
+declare -a images
+
+options="Options:
+    -h, --help                          This help menu.
+
+    -d, --desktop                       Attempt to minimize all windows before locking.
+
+    -g, --greyscale                     Set background to greyscale instead of color.
+
+    -p, --pixelate                      Pixelate the background instead of blur, runs faster.
+
+    -f <fontname>, --font <fontname>    Set a custom font.
+
+    -t <text>, --text <text>            Set a custom text prompt.
+
+    -F, --show-failed-attempts          Show the number of failed authentication attempts.
+
+    -e, --ignore-empty-password         Don't validate empty passwords.
+
+    -L, --disable-caps-lock-text        Disable the Caps Lock Text.
+
+    -K, --hide-keyboard-layout          Force hiding the current xkb layout while typing.
+
+    -l, --listfonts  Display a list of possible fonts for use with -f/--font.
+                     Note: this option will not lock the screen, it displays
+                     the list and exits immediately."
+
+# move pipefail down as for some reason "convert -list font" returns 1
+set -o pipefail
+trap 'rm -f "$image"' EXIT
+temp="$(getopt -o :h:FeLK:: -l help,show-failed-attempts,ignore-empty-password,disable-caps-lock-text,hide-keyboard-layout --name "$0" -- "$@")"
+eval set -- "$temp"
+
+# l10n support
+text="Type password to unlock"
+
+while true ; do
+    case "$1" in
+        -h|--help)
+            printf "Usage: %s [options]\n\n%s\n\n" "${0##*/}" "$options"; exit 1 ;;
+        -F|-e|-K|-L|--show-failed-attempts|--ignore-empty-password|--disable-caps-lock-text|--hide-keyboard-layout) swaylock_cmd+=("$1"); shift ;;
+        --) shift; break ;;
+        *) echo "error" ; exit 1 ;;
+    esac
+done
+
+swaylock_cmd+=("--indicator-radius" "85")
+
+value="60" #brightness value to compare to
+
+color=$(convert "$background" -gravity center -crop 100x100+0+0 +repage -colorspace hsb \
+-resize 1x1 txt:- | awk -F '[%$]' 'NR==2{gsub(",",""); printf "%.0f\n", $(NF-1)}');
+
+if [[ $color -gt $value ]]; then #white background image and black text
+  bw="black"
+  param=("--inside-color=0000001c" "--ring-color=0000003e" \
+    "--line-color=00000000" "--key-hl-color=ffffff80" "--ring-ver-color=ffffff00" \
+    "--separator-color=22222260" "--inside-ver-color=ff99441c" \
+    "--ring-clear-color=ff994430" "--inside-clear-color=ff994400" \
+    "--ring-wrong-color=ffffff55" "--inside-wrong-color=ffffff1c" "--text-ver-color=00000000" \
+    "--text-wrong-color=00000000" "--text-caps-lock-color=00000000" "--text-clear-color=00000000" \
+    "--line-clear-color=00000000" "--line-wrong-color=00000000" "--line-ver-color=00000000" "--text-color=DB3300FF")
+  icon="$PREFIX/icons/lockdark.png"
+else #black
+  bw="white"
+  icon="$PREFIX/icons/lock.png"
+  param=("--inside-color=ffffff1c" "--ring-color=ffffff3e" \
+          "--line-color=ffffff00" "--key-hl-color=00000080" "--ring-ver-color=00000000" \
+          "--separator-color=22222260" "--inside-ver-color=ff99441c" \
+          "--ring-clear-color=ff994430" "--inside-clear-color=ff994400" \
+          "--ring-wrong-color=00000055" "--inside-wrong-color=0000001c" "--text-ver-color=00000000" \
+          "--text-wrong-color=00000000" "--text-caps-lock-color=00000000" "--text-clear-color=00000000" \
+          "--line-clear-color=00000000" "--line-wrong-color=00000000" "--line-ver-color=00000000" "--text-color=DB3300FF")
+fi
+
+resolution="$(swaymsg -r -t get_outputs | jq -r 'max_by(.current_mode.width) | "\(.current_mode.width)x\(.current_mode.height)"')"
+
+convert "${background}" -scale "${resolution}" "${hue[@]}" -font "$font" -pointsize 26 -fill "$bw" -gravity center \
+    -annotate +0+160 "$text" "$icon" -gravity center -composite "${image}"
+
+param+=("-i" "${image}" "-K")
+
+# try to use swaylock with prepared parameters
+if ! "${swaylock_cmd[@]}" "${param[@]}" >/dev/null 2>&1; then
+    # We have failed, lets get back to stock one
+    "${swaylock_cmd[@]}"
+fi

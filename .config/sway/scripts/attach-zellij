@@ -1,0 +1,18 @@
+#!/bin/bash
+
+list_unattched_session() {
+  local sessions
+  sessions="$(zellij list-sessions)"
+  while read -r name; do
+    echo "$name"
+  done <<< "$sessions"
+}
+
+unattched_session="$(zellij list-sessions)"
+
+if [[ -z "$unattched_session" ]]; then
+  wofi --dmenu <<< "[no session]"
+else
+  session_name="$(wofi --dmenu <<< "$unattched_session")"
+  exec i3-sensible-terminal -e "zellij attach $session_name"
+fi

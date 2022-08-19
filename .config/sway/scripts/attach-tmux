@@ -1,0 +1,21 @@
+#!/bin/bash
+
+list_unattched_session() {
+  local sessions
+  sessions="$(tmux list-sessions -F '#{session_name} #{session_attached}')"
+  while read -r name attached; do
+    if [[ "$attached" -eq "0" ]]; then
+      echo "$name"
+    fi
+  done <<< "$sessions"
+}
+
+unattched_session="$(list_unattched_session)"
+
+if [[ -z "$unattched_session" ]]; then
+  wofi -dmenu <<< "[no session]"
+else
+  session_name="$(rofi -dmenu <<< "$unattched_session")"
+  exec i3-sensible-terminal -e "tmux attach -t $session_name"
+fi
+

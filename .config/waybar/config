@@ -1,0 +1,99 @@
+// vim:ft=json
+
+{
+  "layer": "top",
+  "position": "top",
+
+  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "memory",
+    "cpu",
+    "temperature",
+    "disk",
+    "battery",
+    "tray",
+    "idle_inhibitor"
+  ],
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "format": "  "
+  },
+
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+
+  "clock": {
+    "format": "{:%I:%M}",
+    "format-alt": "{:%I:%M %p %m-%d %a}",
+    "tooltip": false
+  },
+
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "{ifname} {ipaddr} ",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) {ipaddr} ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume:2}%",
+    "format-bluetooth": "{icon}  {volume}%",
+    "format-muted": "ﱝ",
+    "format-icons": {
+      "headphones": "",
+      "default": ["", ""]
+    },
+    "scroll-step": 5,
+    "on-click": "amixer -q -D pulse sset Master toggle",
+    "on-click-right": "pavucontrol"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "Mem {}%"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "CPU {usage:2}%"
+  },
+
+  "temperature": {
+    "thermal-zone": 8
+  },
+
+  "disk": {
+    "interval": 5,
+    "format": "Disk {percentage_used:2}%",
+    "path": "/home"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-icons": ["", "", "", "", ""],
+    "on-click-right": "gnome-power-statistics"
+  },
+  "tray": {
+    "icon-size": 20
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  }
+}
