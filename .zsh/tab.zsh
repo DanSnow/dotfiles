@@ -34,4 +34,5 @@ zle -N expand-dots
 zle -N expand-dots-then-expand-or-complete
 zle -N expand-dots-then-accept-line
 bindkey '^I' expand-dots-then-expand-or-complete
+bindkey '^R' mcfly-history-widget
 # bindkey '^M' expand-dots-then-accept-line

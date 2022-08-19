@@ -114,3 +114,13 @@ zstyle ':completion:*:options' auto-description '%d'
 zstyle ':completion:*:descriptions' format $'[%d]'
 zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
 zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+function set_win_title(){
+  echo -ne "\033]0; zsh: $(basename "$PWD") \007"
+}
+
+precmd_functions+=(set_win_title)

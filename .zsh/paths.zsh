@@ -1,9 +1,7 @@
 function prepend_path() {
   local x="$1"
-  case ":$PATH:" in
-    *":$x:"*) :;;
-    *) PATH="$x:$PATH";;
-  esac
+  # always prepend path
+  PATH="$x:$PATH"
 }
 
 function append_path() {
@@ -31,16 +29,16 @@ function dedup_path() {
   fi
 }
 
+export BUN_INSTALL="/home/snow/.bun"
+
 prepend_path "$WASMTIME_HOME/bin"
-prepend_path "$HOME/.nimble/bin:$PATH"
 prepend_path "$HOME/.local/bin"
+prepend_path "$HOME/.local/share/ponyup/bin"
 prepend_path "$HOME/bin"
+prepend_path "$BUN_INSTALL/bin"
 append_path "$HOME/go/bin"
-append_path "$HOME/sdk/julia/bin"
-append_path "$HOME/.rvm/bin" # Add RVM to PATH for scripting
 append_path "$HOME/sdk/android-sdk/tools"
-append_path "$HOME/sdk/swift/usr/bin"
 append_path "$HOME/.linuxbrew/bin"
 append_path "$SCALA_HOME/bin"
-append_path "$(yarn global bin)"
+append_path "$(cd ~ && yarn global bin)"
 append_path "$HOME/.deno/bin"

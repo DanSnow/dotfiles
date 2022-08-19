@@ -14,19 +14,18 @@ autoload -Uz _zinit
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust \
+    zdharma-continuum/zinit-annex-bin-gem-node
+    # zinit-zsh/z-a-as-monitor \
 
 ### End of Zinit's installer chunk
 
 zinit lucid as"completion" for \
   OMZP::fd/_fd \
-  OMZP::rust/_rust \
+  OMZP::rust/_rustc \
   OMZP::pass/_pass \
   OMZP::redis-cli/_redis-cli \
-  OMZP::cargo/_cargo \
   OMZP::github/_hub \
   OMZP::extract/_extract \
   OMZP::gem/_gem \
@@ -34,6 +33,7 @@ zinit lucid as"completion" for \
   OMZP::pip/_pip \
   OMZP::gradle/_gradle \
   OMZP::laravel/_artisan \
+  OMZP::docker-compose/_docker-compose \
 
 zinit snippet OMZL::clipboard.zsh
 zinit snippet OMZL::completion.zsh
@@ -43,28 +43,33 @@ zinit snippet OMZL::key-bindings.zsh
 zinit snippet OMZL::git.zsh
 zinit snippet OMZL::theme-and-appearance.zsh
 
-zinit lucid wait for\
-  sbin posva/catimg \
+# zinit lucid wait for\
+  # sbin posva/catimg \
 
 GIT_COMPLETE=/usr/share/zsh/functions/Completion/Unix/_git
+
+  # atload"unalias o" OMZP::fasd \
+  # wookayin/fzf-fasd \
 
 zinit lucid wait for \
   OMZP::alias-finder \
   OMZP::bgnotify \
   OMZP::bundler \
+  OMZP::rust \
   OMZP::command-not-found \
   OMZP::composer \
   OMZP::copybuffer \
-  OMZP::copydir \
+  OMZP::copypath \
   OMZP::copyfile \
   OMZP::cp \
   OMZP::debian \
   OMZP::dircycle \
+  OMZP::direnv \
+  OMZP::docker-compose \
   OMZP::encode64 \
   OMZP::extract \
   OMZP::fancy-ctrl-z \
-  atload"unalias o" OMZP::fasd \
-  OMZP::fzf \
+  atload"bindkey ^R mcfly-history-widget" OMZP::fzf \
   OMZP::gem \
   OMZP::git \
   OMZP::git-extras \
@@ -87,7 +92,6 @@ zinit lucid wait for \
   OMZP::tmux \
   OMZP::ubuntu \
   OMZP::yarn \
-  OMZP::zsh_reload \
   atload"compdef _git-add forgit::add;
     compdef _git-reset forgit::reset::head;
     compdef _git-diff forgit::diff;
@@ -97,13 +101,31 @@ zinit lucid wait for \
   zsh-users/zsh-completions \
   MichaelAquilina/zsh-you-should-use \
   memark/zsh-dotnet-completion \
+  Cloudstek/zsh-plugin-appup \
+  null from'gh' autoload'deer' atload"fpath+='\$PWD'; zle -N deer;bindkey '\ek' deer" vifon/deer \
+  reegnz/jq-zsh-plugin \
+  hlissner/zsh-autopair \
+  @asdf-vm/asdf \
+  macunha1/zsh-terraform \
+  mellbourn/zabb \
+  spwhitt/nix-zsh-completions \
+  chisui/zsh-nix-shell \
+  as"completion" pick"contrib/completions/_ffsend" timvisee/ffsend \
+  as"program" from"gh-r" mv"ffsend-* -> ffsend" pick"ffsend" id-as"ffsend-bin" timvisee/ffsend \
+  as"program" from"gh-r" pick"mcfly" atpull"mcfly init zsh > $ZSH_CACHE_DIR/mcfly.zsh" atclone"%atpull" src"$ZSH_CACHE_DIR/mcfly.zsh" cantino/mcfly \
+  as"program" from"gh-r" bpick"*linux-gnu.zip" pick"kn*/_kn" atpull"_kn init --shell=zsh > $ZSH_CACHE_DIR/kn.zsh" atclone"%atpull" src"$ZSH_CACHE_DIR/kn.zsh" micouy/kn \
+  as"program" from"gh-r" bpick"*x86_64*linux*" mv"zoxide-*/zoxide -> zoxide" \
+  pick"zoxide" atpull"zoxide init --no-aliases zsh > $ZSH_CACHE_DIR/zoxide.zsh" atclone"%atpull" src"$ZSH_CACHE_DIR/zoxide.zsh" ajeetdsouza/zoxide
+  # src'fm.zsh' atclone'./fm__compile' atpull'%atclone' ddnexus/fm \
   # greymd/tmux-xpanes \
 
-zinit ice as"program" pick"$ZPFX/sdkman/bin/sdk" id-as'sdkman' run-atpull \
-    atclone"wget 'https://get.sdkman.io/?rcupdate=false' -O scr.sh; SDKMAN_DIR=$ZPFX/sdkman bash scr.sh" \
-    atpull"SDKMAN_DIR=$ZPFX/sdkman sdk selfupdate" \
-    atinit"export SDKMAN_DIR=$ZPFX/sdkman; source $ZPFX/sdkman/bin/sdkman-init.sh"
-zinit light zdharma/null
+# zinit ice as "program" from"gh-r" mv"ffsend-* -> ffsend" light timvisee/ffsend
+
+# zinit ice as"program" pick"$ZPFX/sdkman/bin/sdk" id-as'sdkman' run-atpull \
+#     atclone"wget 'https://get.sdkman.io/?rcupdate=false' -O scr.sh; SDKMAN_DIR=$ZPFX/sdkman bash scr.sh" \
+#     atpull"SDKMAN_DIR=$ZPFX/sdkman sdk selfupdate" \
+#     atinit"export SDKMAN_DIR=$ZPFX/sdkman; source $ZPFX/sdkman/bin/sdkman-init.sh"
+# zinit light zdharma/null
 
 zinit ice as"command" wait lucid \
     atinit"export PYTHONPATH=$ZPFX/lib/python3.8/site-packages/" \
@@ -119,5 +141,3 @@ zinit light-mode lucid for \
   zsh-users/zsh-history-substring-search \
   atload="!enable-fzf-tab" Aloxaf/fzf-tab \
   atload"!_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
-
-

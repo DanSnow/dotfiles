@@ -13,10 +13,9 @@ alias did="vim +'normal Go' +'r!env LC_ALL=C date' ~/did"
 alias idea='eureka'
 alias wine=wine-stable
 alias rtv='EDITOR=vim RTV_PAGER="bat --paging=always -l=md -p" BROWSER="vivaldi --password-store=gnome" rtv'
-alias ytdl='youtube-dl'
+alias ytdl='yt-dlp'
 alias gadl='gallery-dl'
-alias code='codium'
-alias fm='ranger'
+alias fm='xplr'
 alias ipy="ipython3 --no-confirm-exit"
 alias m='mpv --no-vid'
 alias t='x-terminal-emulator'
@@ -26,9 +25,18 @@ alias gcjour='git commit -m "[$(date +"%Y-%m-%d")] DanSnow"'
 alias gl1d='glol --since="1 day"'
 alias b='br -I'
 alias e="$EDITOR"
+alias ge="neovide"
 alias tmp="cd $HOME/Tmp"
 alias oa='a -e xdg-open'
 alias calc='noglob calc'
+alias kalk='noglob kalker'
+alias path='echo -e ${PATH//:/\\n}'
+alias myip='curl -4 https://ifconfig.co'
+alias zel='zellij'
+alias j='__zoxide_zi'
+alias src="exec zsh"
+alias zf='cd "$(xplr --print-pwd-as-result)"'
+alias sfzr='sfz -r'
 
 if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
   alias cbc="wl-copy"

@@ -9,6 +9,10 @@ export ELECTRON_TRASH='gio'
 export SKIM_DEFAULT_COMMAND='fd --type f'
 export MANPAGER="sh -c 'sed -e s/.\\\\x08//g | bat -l man -p'"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export COLORTERM=truecolor
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
+export GDK_BACKEND=wayland
 
 # number of lines kept in history
 export HISTSIZE=10000

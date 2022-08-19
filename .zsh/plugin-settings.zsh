@@ -36,3 +36,6 @@ function bgnotify_formatted { ## args: (exit_status, command, elapsed_seconds)
 
 export ZSH_THEME=''
 DISABLE_AUTO_UPDATE="true"
+
+export MCFLY_INTERFACE_VIEW=BOTTOM
+export MCFLY_FUZZY=true

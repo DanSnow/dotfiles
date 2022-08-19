@@ -1,11 +1,12 @@
 source $HOME/.zsh/envs.zsh
 source $HOME/.zsh/config.zsh
-source $HOME/.zsh/starship.zsh
+source $HOME/.zsh/spaceship.zsh
 source $HOME/.zsh/plugin-settings.zsh
 source $HOME/.zsh/zinit.zsh
 source $HOME/.zsh/paths.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/tab.zsh
+source $HOME/.zsh/zoxide.zsh
 
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
