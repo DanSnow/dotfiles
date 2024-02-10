@@ -73,7 +73,7 @@ setopt MENU_COMPLETE
 
 # bindkey -M menuselect '\C-?' undo
 
-eval "$(dircolors)"
+# eval "$(dircolors)"
 export ZLSCOLORS="${LS_COLORS}"
 zmodload zsh/complist
 
@@ -102,7 +102,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-compdef pkill=killall
+# compdef pkill=killall
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:processes' command "ps -au $USER"
 

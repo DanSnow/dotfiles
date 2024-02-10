@@ -29,16 +29,13 @@ function dedup_path() {
   fi
 }
 
-export BUN_INSTALL="/home/snow/.bun"
 
-prepend_path "$WASMTIME_HOME/bin"
-prepend_path "$HOME/.local/bin"
-prepend_path "$HOME/.local/share/ponyup/bin"
-prepend_path "$HOME/bin"
-prepend_path "$BUN_INSTALL/bin"
-append_path "$HOME/go/bin"
-append_path "$HOME/sdk/android-sdk/tools"
-append_path "$HOME/.linuxbrew/bin"
-append_path "$SCALA_HOME/bin"
-append_path "$(cd ~ && yarn global bin)"
-append_path "$HOME/.deno/bin"
+# prepend_path "$WASMTIME_HOME/bin"
+# prepend_path "$HOME/.local/bin"
+# prepend_path "$HOME/.local/share/ponyup/bin"
+# prepend_path "$HOME/bin"
+# prepend_path "$BUN_INSTALL/bin"
+# append_path "$HOME/go/bin"
+# append_path "$HOME/sdk/android-sdk/tools"
+# append_path "$HOME/.deno/bin"
+# append_path "$HOME/.moon/bin"
