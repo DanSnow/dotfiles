@@ -1,0 +1,1009 @@
+#compdef moon
+
+autoload -U is-at-least
+
+_moon() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_moon_commands" \
+"*::: :->moon" \
+&& ret=0
+    case $state in
+    (moon)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:moon-command-$line[1]:"
+        case $line[1] in
+            (completions)
+_arguments "${_arguments_options[@]}" \
+'--shell=[Shell to generate for]:SHELL:(bash elvish fish powershell zsh)' \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(init)
+_arguments "${_arguments_options[@]}" \
+'--to=[Destination to initialize into]:DEST: ' \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--force[Overwrite existing configurations]' \
+'--minimal[Initialize with minimal configuration and prompts]' \
+'--yes[Skip prompts and use default values]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'::tool -- Specific tool to initialize:(bun node rust typescript)' \
+&& ret=0
+;;
+(bin)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- The tool to query:' \
+&& ret=0
+;;
+(node)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_moon__node_commands" \
+"*::: :->node" \
+&& ret=0
+
+    case $state in
+    (node)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:moon-node-command-$line[1]:"
+        case $line[1] in
+            (run-script)
+_arguments "${_arguments_options[@]}" \
+'--project=[ID of project to run in]:PROJECT: ' \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':name -- Name of the script:' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(setup)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(teardown)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(action-graph)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--dependents[Include dependents of the focused target]' \
+'--dot[Print the graph in DOT format]' \
+'--json[Print the graph in JSON format]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'::target -- Target to *only* graph:' \
+&& ret=0
+;;
+(dep-graph)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--dependents[Include dependents of the focused target]' \
+'--dot[Print the graph in DOT format]' \
+'--json[Print the graph in JSON format]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'::target -- Target to *only* graph:' \
+&& ret=0
+;;
+(project)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--json[Print in JSON format]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':id -- ID of project to display:' \
+&& ret=0
+;;
+(project-graph)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--dot[Print the graph in DOT format]' \
+'--json[Print the graph in JSON format]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'::id -- ID of project to *only* graph:' \
+&& ret=0
+;;
+(sync)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_moon__sync_commands" \
+"*::: :->sync" \
+&& ret=0
+
+    case $state in
+    (sync)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:moon-sync-command-$line[1]:"
+        case $line[1] in
+            (codeowners)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--clean[Clean and remove previously generated file]' \
+'--force[Bypass cache and force create file]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(hooks)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--clean[Clean and remove previously generated hooks]' \
+'--force[Bypass cache and force create hooks]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(projects)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(task)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--json[Print in JSON format]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':target -- Target of task to display:' \
+&& ret=0
+;;
+(generate)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--defaults[Use the default value of all variables instead of prompting]' \
+'--dryRun[Run entire generator process without writing files]' \
+'--force[Force overwrite any existing files at the destination]' \
+'--template[Create a new template]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':name -- Name of template to generate:' \
+'::dest -- Destination path, relative from the current working directory:' \
+'*::vars -- Arguments to define as variable values:' \
+&& ret=0
+;;
+(check)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--all[Run check for all projects in the workspace]' \
+'-u[Bypass cache and force update any existing items]' \
+'--updateCache[Bypass cache and force update any existing items]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'*::ids -- List of project IDs to explicitly check:' \
+&& ret=0
+;;
+(ci)
+_arguments "${_arguments_options[@]}" \
+'--base=[Base branch, commit, or revision to compare against]:BASE: ' \
+'--head=[Current branch, commit, or revision to compare with]:HEAD: ' \
+'--job=[Index of the current job]:JOB: ' \
+'--jobTotal=[Total amount of jobs to run]:JOB_TOTAL: ' \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'*::targets -- List of targets (scope\:task) to run:' \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" \
+'--query=[Focus target(s) based on the result of a query]:QUERY: ' \
+'--profile=[Record and generate a profile for ran tasks]:PROFILE:(cpu heap)' \
+'*--status=[Filter affected files based on a touched status]:STATUS:(added all deleted modified staged unstaged untracked)' \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--dependents[Run dependents of the primary targets]' \
+'-f[Force run and ignore touched files and affected status]' \
+'--force[Force run and ignore touched files and affected status]' \
+'-i[Run the target interactively]' \
+'--interactive[Run the target interactively]' \
+'-u[Bypass cache and force update any existing items]' \
+'--updateCache[Bypass cache and force update any existing items]' \
+'--affected[Only run target if affected by touched files]' \
+'--remote[Determine affected against remote by comparing against a base revision]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'*::targets -- List of targets to run:' \
+&& ret=0
+;;
+(ext)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':id -- ID of the extension to execute:' \
+'*::passthrough -- Arguments to pass through to the extension:' \
+&& ret=0
+;;
+(clean)
+_arguments "${_arguments_options[@]}" \
+'--lifetime=[Lifetime of cached artifacts]:LIFETIME: ' \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(docker)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_moon__docker_commands" \
+"*::: :->docker" \
+&& ret=0
+
+    case $state in
+    (docker)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:moon-docker-command-$line[1]:"
+        case $line[1] in
+            (prune)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(scaffold)
+_arguments "${_arguments_options[@]}" \
+'*--include=[Additional file globs to include in sources]:INCLUDE: ' \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'*::ids -- List of project IDs to copy sources for:' \
+&& ret=0
+;;
+(setup)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(migrate)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--skipTouchedFilesCheck[Disable the check for touched/dirty files]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_moon__migrate_commands" \
+"*::: :->migrate" \
+&& ret=0
+
+    case $state in
+    (migrate)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:moon-migrate-command-$line[1]:"
+        case $line[1] in
+            (from-package-json)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--skip-touched-files-check[]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':id -- ID of project to migrate:' \
+&& ret=0
+;;
+(from-turborepo)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--skipTouchedFilesCheck[Disable the check for touched/dirty files]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(query)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_moon__query_commands" \
+"*::: :->query" \
+&& ret=0
+
+    case $state in
+    (query)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:moon-query-command-$line[1]:"
+        case $line[1] in
+            (hash)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--json[Print the manifest in JSON format]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':hash -- Hash to inspect:' \
+&& ret=0
+;;
+(hash-diff)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--json[Print the diff in JSON format]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':left -- Base hash to compare against:' \
+':right -- Other hash to compare with:' \
+&& ret=0
+;;
+(projects)
+_arguments "${_arguments_options[@]}" \
+'--alias=[Filter projects that match this alias]:ALIAS: ' \
+'--id=[Filter projects that match this ID]:ID: ' \
+'--language=[Filter projects of this programming language]:LANGUAGE: ' \
+'--stack=[Filter projects that match this source path]:STACK: ' \
+'--source=[Filter projects of this tech stack]:SOURCE: ' \
+'--tags=[Filter projects that have the following tags]:TAGS: ' \
+'--tasks=[Filter projects that have the following tasks]:TASKS: ' \
+'--type=[Filter projects of this type]:TYPE_OF: ' \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--affected[Filter projects that are affected based on touched files]' \
+'--json[Print the projects in JSON format]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'::query -- Filter projects using a query (takes precedence over options):' \
+&& ret=0
+;;
+(tasks)
+_arguments "${_arguments_options[@]}" \
+'--alias=[Filter projects that match this alias]:ALIAS: ' \
+'--id=[Filter projects that match this ID]:ID: ' \
+'--language=[Filter projects of this programming language]:LANGUAGE: ' \
+'--source=[Filter projects that match this source path]:SOURCE: ' \
+'--tasks=[Filter projects that have the following tasks]:TASKS: ' \
+'--type=[Filter projects of this type]:TYPE_OF: ' \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--affected[Filter projects that are affected based on touched files]' \
+'--json[Print the tasks in JSON format]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+'::query -- Filter projects using a query (takes precedence over options):' \
+&& ret=0
+;;
+(touched-files)
+_arguments "${_arguments_options[@]}" \
+'--base=[Base branch, commit, or revision to compare against]:BASE: ' \
+'--head=[Current branch, commit, or revision to compare with]:HEAD: ' \
+'*--status=[Filter files based on a touched status]:STATUS:(added all deleted modified staged unstaged untracked)' \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--defaultBranch[When on the default branch, compare against the previous revision]' \
+'--json[Print the files in JSON format]' \
+'--local[Gather files from you local state instead of the remote]' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(upgrade)
+_arguments "${_arguments_options[@]}" \
+'--cache=[Mode for cache operations]:CACHE:(off read read-write write)' \
+'-c+[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--concurrency=[Maximum number of threads to utilize]:CONCURRENCY: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--logFile=[Path to a file to dump the moon logs]:LOG_FILE:_files' \
+'--color[Force colored output for moon]' \
+'-q[Hide all non-important moon specific terminal output]' \
+'--quiet[Hide all non-important moon specific terminal output]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_moon_commands] )) ||
+_moon_commands() {
+    local commands; commands=(
+'completions:Generate command completions for your current shell.' \
+'init:Initialize a new moon repository, or a new toolchain, by scaffolding config files.' \
+'bin:Return an absolute path to a tool'\''s binary within the toolchain.' \
+'node:Special Node.js commands.' \
+'setup:Setup the environment by installing all tools.' \
+'teardown:Teardown the environment by uninstalling all tools and deleting temp files.' \
+'action-graph:Display an interactive dependency graph of all tasks and actions.' \
+'dep-graph:Display an interactive dependency graph of all tasks and actions.' \
+'project:Display information about a single project.' \
+'project-graph:Display an interactive graph of projects.' \
+'sync:Sync the workspace to a healthy state.' \
+'task:Display information about a single task.' \
+'generate:Generate and scaffold files from a pre-defined template.' \
+'check:Run all build and test related tasks for the current project.' \
+'ci:Run all affected projects and tasks in a CI environment.' \
+'run:Run one or many project tasks and their dependent tasks.' \
+'ext:Execute an extension plugin.' \
+'clean:Clean the workspace and delete any stale or invalid artifacts.' \
+'docker:Operations for integrating with Docker and Dockerfile(s).' \
+'migrate:Operations for migrating existing projects to moon.' \
+'query:Query information about moon, the environment, and pipeline.' \
+'upgrade:Upgrade to the latest version of moon.' \
+    )
+    _describe -t commands 'moon commands' commands "$@"
+}
+(( $+functions[_moon__action-graph_commands] )) ||
+_moon__action-graph_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon action-graph commands' commands "$@"
+}
+(( $+functions[_moon__bin_commands] )) ||
+_moon__bin_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon bin commands' commands "$@"
+}
+(( $+functions[_moon__check_commands] )) ||
+_moon__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon check commands' commands "$@"
+}
+(( $+functions[_moon__ci_commands] )) ||
+_moon__ci_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon ci commands' commands "$@"
+}
+(( $+functions[_moon__clean_commands] )) ||
+_moon__clean_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon clean commands' commands "$@"
+}
+(( $+functions[_moon__sync__codeowners_commands] )) ||
+_moon__sync__codeowners_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon sync codeowners commands' commands "$@"
+}
+(( $+functions[_moon__completions_commands] )) ||
+_moon__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon completions commands' commands "$@"
+}
+(( $+functions[_moon__dep-graph_commands] )) ||
+_moon__dep-graph_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon dep-graph commands' commands "$@"
+}
+(( $+functions[_moon__docker_commands] )) ||
+_moon__docker_commands() {
+    local commands; commands=(
+'prune:Remove extraneous files and folders within a Dockerfile.' \
+'scaffold:Scaffold a repository skeleton for use within Dockerfile(s).' \
+'setup:Setup a Dockerfile by installing dependencies for necessary projects.' \
+    )
+    _describe -t commands 'moon docker commands' commands "$@"
+}
+(( $+functions[_moon__ext_commands] )) ||
+_moon__ext_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon ext commands' commands "$@"
+}
+(( $+functions[_moon__migrate__from-package-json_commands] )) ||
+_moon__migrate__from-package-json_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon migrate from-package-json commands' commands "$@"
+}
+(( $+functions[_moon__migrate__from-turborepo_commands] )) ||
+_moon__migrate__from-turborepo_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon migrate from-turborepo commands' commands "$@"
+}
+(( $+functions[_moon__generate_commands] )) ||
+_moon__generate_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon generate commands' commands "$@"
+}
+(( $+functions[_moon__query__hash_commands] )) ||
+_moon__query__hash_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon query hash commands' commands "$@"
+}
+(( $+functions[_moon__query__hash-diff_commands] )) ||
+_moon__query__hash-diff_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon query hash-diff commands' commands "$@"
+}
+(( $+functions[_moon__sync__hooks_commands] )) ||
+_moon__sync__hooks_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon sync hooks commands' commands "$@"
+}
+(( $+functions[_moon__init_commands] )) ||
+_moon__init_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon init commands' commands "$@"
+}
+(( $+functions[_moon__migrate_commands] )) ||
+_moon__migrate_commands() {
+    local commands; commands=(
+'from-package-json:Migrate \`package.json\` scripts and dependencies to \`moon.yml\`.' \
+'from-turborepo:Migrate \`turbo.json\` to moon configuration files.' \
+    )
+    _describe -t commands 'moon migrate commands' commands "$@"
+}
+(( $+functions[_moon__node_commands] )) ||
+_moon__node_commands() {
+    local commands; commands=(
+'run-script:Run a \`package.json\` script within a project.' \
+    )
+    _describe -t commands 'moon node commands' commands "$@"
+}
+(( $+functions[_moon__project_commands] )) ||
+_moon__project_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon project commands' commands "$@"
+}
+(( $+functions[_moon__project-graph_commands] )) ||
+_moon__project-graph_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon project-graph commands' commands "$@"
+}
+(( $+functions[_moon__query__projects_commands] )) ||
+_moon__query__projects_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon query projects commands' commands "$@"
+}
+(( $+functions[_moon__sync__projects_commands] )) ||
+_moon__sync__projects_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon sync projects commands' commands "$@"
+}
+(( $+functions[_moon__docker__prune_commands] )) ||
+_moon__docker__prune_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon docker prune commands' commands "$@"
+}
+(( $+functions[_moon__query_commands] )) ||
+_moon__query_commands() {
+    local commands; commands=(
+'hash:Inspect the contents of a generated hash.' \
+'hash-diff:Query the difference between two hashes.' \
+'projects:Query for projects within the project graph.' \
+'tasks:List all available projects & their tasks.' \
+'touched-files:Query for touched files between revisions.' \
+    )
+    _describe -t commands 'moon query commands' commands "$@"
+}
+(( $+functions[_moon__run_commands] )) ||
+_moon__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon run commands' commands "$@"
+}
+(( $+functions[_moon__node__run-script_commands] )) ||
+_moon__node__run-script_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon node run-script commands' commands "$@"
+}
+(( $+functions[_moon__docker__scaffold_commands] )) ||
+_moon__docker__scaffold_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon docker scaffold commands' commands "$@"
+}
+(( $+functions[_moon__docker__setup_commands] )) ||
+_moon__docker__setup_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon docker setup commands' commands "$@"
+}
+(( $+functions[_moon__setup_commands] )) ||
+_moon__setup_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon setup commands' commands "$@"
+}
+(( $+functions[_moon__sync_commands] )) ||
+_moon__sync_commands() {
+    local commands; commands=(
+'codeowners:Aggregate and sync code owners to a \`CODEOWNERS\` file.' \
+'hooks:Generate and sync hook scripts for the workspace configured VCS.' \
+'projects:Sync all projects and configs in the workspace.' \
+    )
+    _describe -t commands 'moon sync commands' commands "$@"
+}
+(( $+functions[_moon__task_commands] )) ||
+_moon__task_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon task commands' commands "$@"
+}
+(( $+functions[_moon__query__tasks_commands] )) ||
+_moon__query__tasks_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon query tasks commands' commands "$@"
+}
+(( $+functions[_moon__teardown_commands] )) ||
+_moon__teardown_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon teardown commands' commands "$@"
+}
+(( $+functions[_moon__query__touched-files_commands] )) ||
+_moon__query__touched-files_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon query touched-files commands' commands "$@"
+}
+(( $+functions[_moon__upgrade_commands] )) ||
+_moon__upgrade_commands() {
+    local commands; commands=()
+    _describe -t commands 'moon upgrade commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_moon" ]; then
+    _moon "$@"
+else
+    compdef _moon moon
+fi

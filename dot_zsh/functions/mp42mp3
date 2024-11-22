@@ -1,0 +1,4 @@
+# function mp42mp3 {
+  parallel ffmpeg -i "{}" -vn "{.}.mp3" ::: "$@"
+# }
+# vim: ft=zsh
