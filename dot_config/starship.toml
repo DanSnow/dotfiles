@@ -1,0 +1,14 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+[status]
+disabled = false
+format = '[$symbol$status_common_meaning$status_signal_name$status]($style) '
+map_symbol = true
+pipestatus = true
+
+[git_metrics]
+disabled = false
+
+[sudo]
+disabled = false
+

@@ -77,7 +77,6 @@ zinit lucid wait for \
   OMZP::alias-finder \
   OMZP::bgnotify \
   OMZP::composer \
-  OMZP::debian \
   OMZP::dircycle \
   OMZP::direnv \
   OMZP::docker-compose \
@@ -94,7 +93,7 @@ zinit lucid wait for \
   OMZP::systemd \
   OMZP::taskwarrior \
   OMZP::tmux \
-  OMZP::ubuntu \
+  ntnyq/omz-plugin-pnpm \
   Tarrasch/zsh-bd \
   atclone'./zplug.zsh' g-plane/zsh-yarn-autocompletions \
   zsh-users/zsh-completions \
@@ -106,6 +105,8 @@ zinit lucid wait for \
   hlissner/zsh-autopair \
   macunha1/zsh-terraform \
   mellbourn/zabb \
+  # OMZP::debian \
+  # OMZP::ubuntu \
 
 zinit light-mode lucid for \
   OMZP::magic-enter \

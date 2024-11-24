@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+export NVIM_APPNAME="${NVIM_APPNAME:-"avim"}"
+
+export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-"$HOME/.local/share/astrovim"}"
+export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-"$HOME/.config/avim"}"
+export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"$HOME/.cache/avim"}"
+
+export LUNARVIM_BASE_DIR="${LUNARVIM_BASE_DIR:-"$HOME/.local/share/astrovim/avim"}"
+
+exec -a "$NVIM_APPNAME" nvim -u "$LUNARVIM_CONFIG_DIR/init.lua" "$@"
