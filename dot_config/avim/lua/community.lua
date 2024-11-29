@@ -36,5 +36,6 @@ return {
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.indent.mini-indentscope" },
   { import = "astrocommunity.completion.avante-nvim" },
+  { import = "astrocommunity.programming-language-support.rest-nvim" },
   -- import/override with your plugins folder
 }
