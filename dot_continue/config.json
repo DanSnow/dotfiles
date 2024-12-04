@@ -5,11 +5,16 @@
       "provider": "ollama",
       "model": "llama3.2"
     },
+    {
+      "title": "Codegemma 7b",
+      "provider": "ollama",
+      "model": "codegemma"
+    },
   ],
-  "tabAutocompleteModel": {
-    "title": "Starcoder 3b",
+ "tabAutocompleteModel": {
+    "title": "Qwen2.5-Coder 1.5B",
     "provider": "ollama",
-    "model": "starcoder2:3b"
+    "model": "qwen2.5-coder:1.5b"
   },
   "customCommands": [
     {

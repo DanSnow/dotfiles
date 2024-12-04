@@ -25,6 +25,7 @@ return {
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.motion.leap-nvim" },
   { import = "astrocommunity.motion.mini-surround" },
+  { import = "astrocommunity.motion.nvim-spider" },
   { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
@@ -37,5 +38,6 @@ return {
   { import = "astrocommunity.indent.mini-indentscope" },
   { import = "astrocommunity.completion.avante-nvim" },
   { import = "astrocommunity.programming-language-support.rest-nvim" },
+  { import = "astrocommunity.editing-support.text-case-nvim" },
   -- import/override with your plugins folder
 }
