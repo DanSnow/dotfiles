@@ -8,6 +8,7 @@ source $HOME/.zsh/paths.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/tab.zsh
 source $HOME/.zsh/zoxide.zsh
+source $HOME/.zsh/flirt.zsh
 
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down

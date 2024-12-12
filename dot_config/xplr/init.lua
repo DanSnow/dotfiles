@@ -4,48 +4,37 @@ local home = os.getenv("HOME")
 local xpm_path = home .. "/.local/share/xplr/dtomvan/xpm.xplr"
 local xpm_url = "https://github.com/dtomvan/xpm.xplr"
 
-package.path = package.path
-  .. ";"
-  .. xpm_path
-  .. "/?.lua;"
-  .. xpm_path
-  .. "/?/init.lua"
+package.path = package.path .. ";" .. xpm_path .. "/?.lua;" .. xpm_path .. "/?/init.lua"
 
-os.execute(
-  string.format(
-    "[ -e '%s' ] || git clone '%s' '%s'",
-    xpm_path,
-    xpm_url,
-    xpm_path
-  )
-)
+os.execute(string.format("[ -e '%s' ] || git clone '%s' '%s'", xpm_path, xpm_url, xpm_path))
 
 require("xpm").setup({
   plugins = {
     -- Let xpm manage itself
-    'dtomvan/xpm.xplr',
-    'sayanarijit/fzf.xplr',
-    'sayanarijit/command-mode.xplr',
-    'sayanarijit/dua-cli.xplr',
-    'dtomvan/ouch.xplr',
+    "dtomvan/xpm.xplr",
+    "sayanarijit/fzf.xplr",
+    "sayanarijit/command-mode.xplr",
+    "sayanarijit/dua-cli.xplr",
+    "dtomvan/ouch.xplr",
     {
-      name = 'sayanarijit/trash-cli.xplr',
+      name = "sayanarijit/trash-cli.xplr",
       setup = function()
-          require("trash-cli").setup({
-            trash_bin = "/opt/homebrew/bin/trash",
-          })
+        require("trash-cli").setup({
+          trash_bin = "/opt/homebrew/bin/trash",
+        })
       end,
     },
-    'sayanarijit/zoxide.xplr',
+    "sayanarijit/zoxide.xplr",
     -- 'sayanarijit/material-landscape2.xplr',
-    'sayanarijit/zentable.xplr',
+    "sayanarijit/zentable.xplr",
     -- 'prncss-xyz/icons.xplr',
-    'gitlab:hartan/web-devicons.xplr',
+    "gitlab:hartan/web-devicons.xplr",
+    "sayanarijit/scp.xplr",
     {
-      'dtomvan/extra-icons.xplr',
+      "dtomvan/extra-icons.xplr",
       after = function()
         xplr.config.general.table.row.cols[2] = { format = "custom.icons_dtomvan_col_1" }
-      end
+      end,
     },
   },
   auto_install = true,
