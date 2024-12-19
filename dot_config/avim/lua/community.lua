@@ -29,6 +29,8 @@ return {
   { import = "astrocommunity.recipes.vscode" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
+  { import = "astrocommunity.file-explorer.oil-nvim" },
+  { import = "astrocommunity.completion.blink-cmp" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
   { import = "astrocommunity.split-and-window.mini-map" },
   { import = "astrocommunity.search.sad-nvim" },
