@@ -53,7 +53,7 @@ zinit lucid for \
   OMZP::git \
   OMZP::git-extras \
   OMZP::github \
-  OMZP::yarn \
+  # OMZP::yarn \
 
 # zinit lucid for \
 #   OMZP::rust \
