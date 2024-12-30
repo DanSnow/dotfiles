@@ -42,7 +42,7 @@ alias cbp='clippaste'
 alias zx='__zoxide_zi'
 alias zz='kn'
 alias zc='cd "$(xplr --print-pwd-as-result)"'
-alias rtx='mise'
+alias lg='lazygit'
 
 # File Download
 if (( $+commands[curl] )); then

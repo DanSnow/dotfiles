@@ -53,6 +53,7 @@ zinit lucid for \
   OMZP::git \
   OMZP::git-extras \
   OMZP::github \
+  jeffreytse/zsh-vi-mode \
   # OMZP::yarn \
 
 # zinit lucid for \
