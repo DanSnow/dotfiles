@@ -12,6 +12,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export COLORTERM=truecolor
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
+export XDG_CONFIG_HOME="$HOME/.config"
 export GDK_BACKEND=wayland
 
 # number of lines kept in history
