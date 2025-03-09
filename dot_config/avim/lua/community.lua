@@ -36,7 +36,7 @@ return {
   { import = "astrocommunity.search.sad-nvim" },
   { import = "astrocommunity.register.nvim-neoclip-lua" },
   { import = "astrocommunity.icon.mini-icons" },
-  { import = "astrocommunity.code-runner.molten-nvim" },
+  -- { import = "astrocommunity.code-runner.molten-nvim" },
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.indent.mini-indentscope" },
   -- { import = "astrocommunity.completion.avante-nvim" },

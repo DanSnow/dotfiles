@@ -87,8 +87,6 @@ zinit lucid wait for \
   OMZP::gem \
   OMZP::golang \
   OMZP::kubectl \
-  OMZP::laravel \
-  OMZP::laravel5 \
   OMZP::minikube \
   OMZP::mosh \
   OMZP::systemd \
@@ -108,6 +106,8 @@ zinit lucid wait for \
   mellbourn/zabb \
   # OMZP::debian \
   # OMZP::ubuntu \
+  # OMZP::laravel \
+  # OMZP::laravel5 \
 
 zinit light-mode lucid for \
   OMZP::magic-enter \

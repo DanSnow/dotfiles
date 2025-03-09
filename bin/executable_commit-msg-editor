@@ -3,5 +3,5 @@
 if pgrep code > /dev/null; then
   code --wait "$@"
 else
-  lvim "$@"
+  avim "$@"
 fi

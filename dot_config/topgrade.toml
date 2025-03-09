@@ -3,7 +3,7 @@
 #assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["vim", "pnpm"]
+disable = ["vim", "pnpm", "chezmoi", "certbot"]
 
 # Ignore failures for these steps
 #ignore_failures = ["powershell"]
