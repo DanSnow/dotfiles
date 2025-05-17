@@ -14,6 +14,7 @@ export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
 export XDG_CONFIG_HOME="$HOME/.config"
 export GDK_BACKEND=wayland
+export COMPOSE_BAKE=true
 
 # number of lines kept in history
 export HISTSIZE=10000

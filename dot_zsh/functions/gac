@@ -1,0 +1,23 @@
+# vim: ft=zsh
+# git auto commit
+# function gac() {
+local git_root="$(git rev-parse --show-toplevel)"
+if [[ -z "$git_root" ]]; then
+  echo "unable to find git root, exit"
+  return 1
+fi
+
+if [[ -d "${git_root}/.git/rebase-merge" ]]; then
+  echo "Rebase in progress, attempting to continue..."
+  git rebase --continue
+  if [[ $? -ne 0 ]]; then
+    echo "git rebase --continue failed.  Check for conflicts."
+    return 1
+  fi
+  return 0
+fi
+
+codegpt commit
+
+# }
+
