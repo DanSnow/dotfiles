@@ -1,13 +1,37 @@
-[plugin]
-deps = [
-  { use = "GrzegorzKozub/mdcat", rev = "d3d5089" },
-  { use = "Reledia/miller", rev = "40e0265" },
-  { use = "Reledia/hexyl", rev = "39d3d4e" },
-  { use = "ndtoan96/ouch", rev = "b869886" },
-  { use = "Lil-Dank/lazygit", rev = "c82794f" },
-  { use = "yazi-rs/plugins:git", rev = "7afba3a" },
-  { use = "Rolv-Apneseth/starship", rev = "247f49d" },
-]
+[[plugin.deps]]
+use = "GrzegorzKozub/mdcat"
+rev = "d3d5089"
+hash = ""
+
+[[plugin.deps]]
+use = "Reledia/miller"
+rev = "40e0265"
+hash = ""
+
+[[plugin.deps]]
+use = "Reledia/hexyl"
+rev = "39d3d4e"
+hash = ""
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "b869886"
+hash = ""
+
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "c82794f"
+hash = ""
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "7afba3a"
+hash = ""
+
+[[plugin.deps]]
+use = "Rolv-Apneseth/starship"
+rev = "247f49d"
+hash = ""
 
 [flavor]
 deps = []

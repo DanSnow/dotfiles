@@ -28,4 +28,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     enabled = false,
   },
+  {
+    "m4xshen/hardtime.nvim",
+    enabled = false,
+  },
 }

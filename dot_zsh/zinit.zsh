@@ -12,12 +12,13 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 zinit lucid as"completion" for \
+  OMZP::fd/_fd \
   OMZP::rust/_rustc \
   OMZP::pass/_pass \
   OMZP::redis-cli/_redis-cli \
   OMZP::github/_hub \
   OMZP::extract/_extract \
-  OMZP::gem/completions/_gem \
+  OMZP::gem/_gem \
   OMZP::bundler/_bundler \
   OMZP::pip/_pip \
   OMZP::gradle/_gradle \

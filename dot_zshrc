@@ -18,8 +18,6 @@ source "$HOME/.zsh/init.zsh"
 
 # clear
 dedup_path
-eval "$(_kn init --shell zsh)"
-
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -44,6 +42,7 @@ tere() {
 eval "$(mise activate -s zsh)"
 eval "$(zoxide init zsh)"
 eval "$(navi widget zsh)"
+eval "$(fnox activate zsh)"
 
 
 
@@ -57,3 +56,8 @@ eval "$(navi widget zsh)"
 
 # Shopify Hydrogen alias to local projects
 alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+. "$HOME/.atuin/bin/env"
+if [ -x "$(command -v atuin)" ]; then eval "$(atuin init zsh)"; fi

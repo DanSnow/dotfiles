@@ -15,6 +15,7 @@ export XDG_CURRENT_DESKTOP=sway
 export XDG_CONFIG_HOME="$HOME/.config"
 export GDK_BACKEND=wayland
 export COMPOSE_BAKE=true
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 # number of lines kept in history
 export HISTSIZE=10000
@@ -37,3 +38,7 @@ else
 fi
 
 export RUSTC_WRAPPER='sccache'
+
+if [[ -f "$HOME/.zsh/envs.local.zsh" ]]; then
+  source "$HOME/.zsh/envs.local.zsh"
+fi

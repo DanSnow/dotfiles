@@ -1,9 +1,20 @@
+
 [misc]
 # Don't ask for confirmations
-#assume_yes = true
+assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["vim", "pnpm", "chezmoi", "certbot", "rye", "ruby_gems", "uv"]
+disable = [
+  "vim",
+  "pnpm",
+  "chezmoi",
+  "certbot",
+  "rye",
+  "ruby_gems",
+  "uv",
+  "helix",
+  "android_studio",
+]
 
 # Ignore failures for these steps
 #ignore_failures = ["powershell"]
@@ -12,7 +23,7 @@ disable = ["vim", "pnpm", "chezmoi", "certbot", "rye", "ruby_gems", "uv"]
 #only = ["system", "emacs"]
 
 # Do not ask to retry failed steps (default: false)
-#no_retry = true
+no_retry = true
 
 # Run inside tmux
 #run_in_tmux = true
@@ -65,7 +76,6 @@ disable = ["vim", "pnpm", "chezmoi", "certbot", "rye", "ruby_gems", "uv"]
 "LunarVim" = "lvim +LvimUpdate +q"
 "LunarVim Plugins" = "lvim +'Lazy sync' +q"
 "AstroVim" = "lvim +AstroUpdate +q"
-"Moonrepo" = "cd ~ && moon upgrade"
 
 [brew]
 #greedy_cask = true

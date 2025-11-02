@@ -43,6 +43,7 @@ alias zx='__zoxide_zi'
 alias zz='kn'
 alias zc='cd "$(xplr --print-pwd-as-result)"'
 alias lg='lazygit'
+alias ldo='lazydocker'
 
 # File Download
 if (( $+commands[curl] )); then

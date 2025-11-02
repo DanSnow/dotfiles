@@ -42,5 +42,7 @@ return {
   -- { import = "astrocommunity.completion.avante-nvim" },
   { import = "astrocommunity.programming-language-support.rest-nvim" },
   { import = "astrocommunity.editing-support.text-case-nvim" },
+  { import = "astrocommunity.git.neogit" },
+  { import = "astrocommunity.workflow.hardtime-nvim" },
   -- import/override with your plugins folder
 }
