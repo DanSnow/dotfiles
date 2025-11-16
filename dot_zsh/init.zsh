@@ -4,7 +4,8 @@ source $HOME/.zsh/config.zsh
 source $HOME/.zsh/spaceship.zsh
 source $HOME/.zsh/dotbins.zsh
 source $HOME/.zsh/plugin-settings.zsh
-source $HOME/.zsh/zinit.zsh
+source $HOME/.zsh/sheldon.zsh
+# source $HOME/.zsh/zinit.zsh
 source $HOME/.zsh/paths.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/tab.zsh
