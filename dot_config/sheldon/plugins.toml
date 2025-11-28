@@ -14,6 +14,10 @@ shell = "zsh"
 
 [plugins]
 
+[plugins.brew-zsh]
+local = "/opt/homebrew/share/zsh/site-functions"
+apply = ["fpath"]
+
 [plugins.oh-my-zsh]
 github = "ohmyzsh/ohmyzsh"
 
