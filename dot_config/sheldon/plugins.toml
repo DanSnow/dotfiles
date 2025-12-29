@@ -45,6 +45,17 @@ github = "zsh-users/zsh-autosuggestions"
 [plugins.pnpm]
 github = "ntnyq/omz-plugin-pnpm"
 
+[plugins.custom-completions]
+local = "~/.zsh/completions"
+apply = ["fpath"]
+
+[plugins.zfunctions]
+github = "mattmc3/zfunctions"
+
+[plugins.user-functions]
+local = "~/.config/zsh/functions"
+apply = ["fpath"]
+
 # For example:
 #
 # [plugins.base16]
