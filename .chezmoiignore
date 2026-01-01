@@ -1,4 +1,5 @@
 *~
 .DS_Store
 .config/btop/btop.log
+.config/yazi/plugins
 .zsh/envs.local.zsh
