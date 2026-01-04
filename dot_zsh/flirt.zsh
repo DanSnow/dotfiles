@@ -1,6 +1,6 @@
 # Source this to get flirt support in ZSH.
 
-# I have no idea what I’m doing.
+# I have no idea what I'm doing.
 flirt-widget() {
   LBUFFER="${LBUFFER}$(flirt -x)"
   local ret=$?
@@ -9,4 +9,4 @@ flirt-widget() {
 }
 
 zle -N flirt-widget
-bindkey ^s flirt-widget
+bindkey '^s' flirt-widget
