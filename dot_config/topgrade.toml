@@ -85,6 +85,7 @@ no_retry = true
 "LunarVim" = "lvim +LvimUpdate +q"
 "LunarVim Plugins" = "lvim +'Lazy sync' +q"
 "AstroVim" = "lvim +AstroUpdate +q"
+"dotfiles" = "~/.config/dotfiles/update-dotfiles.sh"
 
 [brew]
 #greedy_cask = true

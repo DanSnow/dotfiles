@@ -56,6 +56,25 @@ return {
       -- optional configuration here
     },
   },
+  {
+    "oribarilan/lensline.nvim",
+    tag = "2.0.0", -- or: branch = 'release/2.x' for latest non-breaking updates
+    event = "LspAttach",
+  },
+  {
+    "m4xshen/hardtime.nvim",
+    opts = {
+      disabled_filetypes = {
+        ["leetcode.nvim"] = true,
+      },
+    },
+  },
+  {
+    "kawre/leetcode.nvim",
+    opts = {
+      lang = "rust",
+    },
+  },
   -- {
   --   "mawkler/refjump.nvim",
   --   keys = {

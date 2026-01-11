@@ -44,5 +44,6 @@ return {
   { import = "astrocommunity.editing-support.text-case-nvim" },
   { import = "astrocommunity.git.neogit" },
   { import = "astrocommunity.workflow.hardtime-nvim" },
+  { import = "astrocommunity.game.leetcode-nvim" },
   -- import/override with your plugins folder
 }
