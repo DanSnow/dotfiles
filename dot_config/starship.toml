@@ -12,10 +12,14 @@ disabled = false
 [sudo]
 disabled = false
 
+[git_branch]
+disabled = true
+
+[git_status]
+disabled = true
+
 [custom.jj]
-command = "prompt"
+command = "jj-starship"
+detect_folders = [".jj", ".git"]
+shell = ["sh"]
 format = "$output "
-ignore_timeout = true
-shell = ["starship-jj", "--ignore-working-copy", "starship"]
-use_stdin = false
-when = true

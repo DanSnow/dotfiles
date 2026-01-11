@@ -14,6 +14,15 @@ disable = [
   "uv",
   "helix",
   "android_studio",
+  "system",
+  "gem",
+  "atuin",
+  "shell",
+  "yarn",
+  "node",
+  "shell",
+  "cargo",
+  "pipx",
 ]
 
 # Ignore failures for these steps
