@@ -5,3 +5,4 @@ font-family = Iosevka Nerd Font
 mouse-hide-while-typing = true
 mouse-shift-capture = true
 theme = Dracula
+keybind = shift+enter=text:\x1b\r

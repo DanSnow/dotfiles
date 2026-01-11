@@ -1,0 +1,44 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+email = "dododavid006@gmail.com"
+name = "DanSnow"
+
+[revset-aliases]
+'HEAD' = '@-'
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'closest_nonempty(to)' = 'heads(::to ~ empty())'
+
+[aliases]
+tug = [
+  "bookmark",
+  "move",
+  "--from",
+  "closest_bookmark(@)",
+  "--to",
+  "closest_nonempty(@)",
+]
+
+# sync - move the nearest bookmark and current git branch to the nearest non-empty change at or before @
+sync = ["util", "exec", "--", "bash", "-c", """
+set -euo pipefail
+jj tug
+git switch `jj closestbookmark`
+""", ""]
+
+# closestbookmark - show the name of the nearest bookmark at or before @
+closestbookmark = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  """
+jj log --no-graph -r 'closest_bookmark(@)' -T 'stringify(local_bookmarks.map(|b| b.name()).join("\n")).first_line()++"\n"'
+""",
+  "",
+]
+
+[ui]
+diff-editor = ":builtin"
+default-command = "log"
