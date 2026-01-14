@@ -1,3 +1,5 @@
+# zmodload zsh/zprof
+
 # CodeWhisperer pre block. Keep at the top of this file.
 ### Added by Zinit's installer
 # if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -9,14 +11,34 @@
 # fi
 
 # source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+
+_smart_source() {
+  local zfile="$1"
+  # Check if compiled file is missing or outdated
+  if [[ ! -f "${zfile}.zwc" || "$zfile" -nt "${zfile}.zwc" ]]; then
+    zcompile "$zfile"
+  fi
+  source "$zfile"
+}
+
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
+ZSH_DISABLE_COMPFIX="true"
+
 source "$HOME/.cargo/env"
 source "$HOME/.zsh/init.zsh"
 
-compinit
+ZSH_DISABLE_COMPFIX="true"
+
+# Cache completion results for 24 hours
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.m-1) ]]; then
+  compinit -C
+else
+  compinit
+fi
 
 # clear
 dedup_path
@@ -41,7 +63,7 @@ tere() {
   [ -n "$result" ] && cd -- "$result"
 }
 
-eval "$(mise activate -s zsh)"
+# eval "$(mise activate -s zsh)"
 eval "$(zoxide init zsh)"
 eval "$(fnox activate zsh)"
 
@@ -64,3 +86,4 @@ alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
 if [ -x "$(command -v atuin)" ]; then eval "$(atuin init zsh)"; fi
 
 # . "$HOME/.langflow/uv/env"
+# zprof

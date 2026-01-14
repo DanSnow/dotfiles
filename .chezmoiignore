@@ -2,4 +2,5 @@
 .DS_Store
 .config/btop/btop.log
 .config/yazi/plugins
+.config/ghostty/*.bak
 .zsh/envs.local.zsh

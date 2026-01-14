@@ -10,6 +10,7 @@ source $HOME/.zsh/paths.zsh
 source $HOME/.zsh/aliases.zsh
 source $HOME/.zsh/tab.zsh
 source $HOME/.zsh/zoxide.zsh
+source $HOME/.zsh/mise.zsh
 source $HOME/.zsh/flirt.zsh
 source $HOME/.zsh/atuin.zsh
 
