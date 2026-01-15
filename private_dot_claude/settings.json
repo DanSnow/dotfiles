@@ -1,0 +1,6 @@
+{
+  "cleanupPeriodDays": 270,
+  "enabledPlugins": {
+    "sourceatlas@lis186-SourceAtlas": true
+  }
+}
