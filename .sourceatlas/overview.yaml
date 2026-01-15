@@ -1,0 +1,178 @@
+metadata:
+  project_name: chezmoi
+  scan_time: 2026-01-15T00:00:00Z
+  total_files: 98
+  scanned_files: 8
+  scan_ratio: 8.16%
+  project_scale: LARGE
+  context:
+    directory: /Users/snow/.local/share/chezmoi
+    git_branch: ""
+    git_status: clean
+
+project_fingerprint:
+  project_type: dotfiles_manager
+  scale: LARGE
+  primary_language: Shell
+  framework: chezmoi
+  architecture: declarative_configuration
+
+tech_stack:
+  backend:
+    language: Shell (Zsh)
+    runtime: zsh
+    package_manager: mise, sheldon
+  infrastructure:
+    encryption: age (YubiKey-based)
+    version_control: git
+    deployment: chezmoi
+
+hypotheses:
+  architecture:
+    - hypothesis: "Modular ZSH configuration using source-based initialization pattern"
+      confidence: 0.95
+      evidence:
+        - "dot_zsh/init.zsh:2-15 sources multiple module files (envs, config, spaceship, etc.)"
+      validation_method: "Read init.zsh and verify all sourced modules exist"
+
+    - hypothesis: "Configuration organized by tool with 17+ separate tool configs in dot_config/"
+      confidence: 0.90
+      evidence:
+        - "Directory listing shows dot_config/ contains 17 subdirectories (avim, btop, ghostty, lazygit, etc.)"
+      validation_method: "List dot_config/ directory contents"
+
+    - hypothesis: "Security-focused dotfiles with age encryption and YubiKey integration"
+      confidence: 0.95
+      evidence:
+        - ".chezmoi.toml.tmpl:1-4 configures age encryption with YubiKey recipient"
+      validation_method: "Read .chezmoi.toml.tmpl and verify age configuration"
+
+  tech_stack:
+    - hypothesis: "Primary shell is Zsh with extensive customization (15+ module files)"
+      confidence: 1.0
+      evidence:
+        - "dot_zsh/ directory contains 15+ zsh files (init, config, aliases, envs, etc.)"
+        - "dot_zshrc and dot_zshenv at root level"
+      validation_method: "List dot_zsh/ directory and count files"
+
+    - hypothesis: "Uses modern Rust-based CLI tools (lsd, fd, rg, bat, zoxide, starship)"
+      confidence: 0.95
+      evidence:
+        - "dot_zsh/aliases.zsh:1-5 aliases ls to lsd, uses fd in SKIM_DEFAULT_COMMAND"
+        - "dot_config/starship.toml:1 starship prompt configuration"
+        - "dot_zsh/aliases.zsh:37 zoxide alias"
+      validation_method: "Read aliases.zsh and identify Rust tool references"
+
+    - hypothesis: "Multi-language development environment (Go, Rust, Scala, Android, .NET)"
+      confidence: 0.90
+      evidence:
+        - "dot_zsh/envs.zsh:2-4 exports GOPATH, SCALA_HOME, ANDROID_HOME"
+        - "dot_zsh/envs.zsh:40 RUSTC_WRAPPER='sccache'"
+        - "dot_zshenv:1 Cargo environment"
+      validation_method: "Read envs.zsh and identify language-specific exports"
+
+    - hypothesis: "Uses mise (formerly rtx) for runtime version management"
+      confidence: 0.90
+      evidence:
+        - "dot_zshenv:6 adds mise shims to PATH"
+        - "dot_zsh/mise.zsh exists in init.zsh:13 source list"
+      validation_method: "Check for mise.zsh and PATH configuration"
+
+  development:
+    - hypothesis: "Advanced ZSH configuration with completion system and Vi-like bindings"
+      confidence: 0.95
+      evidence:
+        - "dot_zsh/config.zsh:1-127 extensive completion system configuration"
+        - "dot_zsh/config.zsh:88 smartcase completion"
+        - "dot_zsh/init.zsh:17-18 history substring search keybindings"
+      validation_method: "Read config.zsh and verify completion settings"
+
+    - hypothesis: "Optimized for performance with selective loading (commented zinit)"
+      confidence: 0.80
+      evidence:
+        - "dot_zsh/init.zsh:8 comments out zinit.zsh source"
+        - "Uses sheldon instead for plugin management"
+      validation_method: "Check init.zsh for plugin manager choices"
+
+    - hypothesis: "Git workflow uses modern alternatives (lazygit, jj/jujutsu)"
+      confidence: 0.90
+      evidence:
+        - "dot_zsh/aliases.zsh:45-46 lazygit and lazyjj aliases"
+        - "dot_config/starship.toml:21-25 custom jj module"
+        - "dot_config/private_jj/ directory exists"
+      validation_method: "Read aliases.zsh and starship.toml for VCS tool references"
+
+    - hypothesis: "Localization support with dual language configuration (zh_TW/en_US)"
+      confidence: 0.85
+      evidence:
+        - "dot_zsh/envs.zsh:30-38 conditional LANG setting based on terminal type"
+      validation_method: "Read envs.zsh locale configuration"
+
+  ai_collaboration:
+    - hypothesis: "No AI collaboration tools detected (Level 0)"
+      confidence: 1.0
+      evidence:
+        - "No CLAUDE.md, .cursorrules, or .claude/ directory found"
+        - "AI tools detection returned empty"
+      validation_method: "Check for presence of AI tool configuration files"
+
+  business:
+    - hypothesis: "Personal development environment for polyglot programmer"
+      confidence: 0.95
+      evidence:
+        - "Support for multiple languages (Go, Rust, Scala, Android, .NET)"
+        - "Extensive CLI tool customization and aliases"
+        - "Developer-focused tools (neovim, lazygit, lazydocker)"
+      validation_method: "Review tool configurations and language environments"
+
+    - hypothesis: "Preference for terminal-based workflow with modern TUIs"
+      confidence: 0.95
+      evidence:
+        - "dot_zsh/aliases.zsh:7 gitui alias, :45 lazygit, :47 lazydocker"
+        - "dot_zsh/aliases.zsh:17 yazi file manager alias"
+      validation_method: "Count TUI tool references in aliases"
+
+scanned_files:
+  - file: .chezmoi.toml.tmpl
+    reason: Configuration root - defines encryption and security model
+    key_insight: Uses age encryption with YubiKey recipient for sensitive data
+
+  - file: .chezmoiignore
+    reason: Defines exclusion patterns for chezmoi management
+    key_insight: Excludes temporary files, logs, and local customizations
+
+  - file: dot_zsh/init.zsh
+    reason: Entry point - orchestrates all ZSH module loading
+    key_insight: Modular initialization with 15+ sourced modules, zinit commented out
+
+  - file: dot_zsh/config.zsh
+    reason: Core ZSH behavior and completion system configuration
+    key_insight: Extensive completion system with smartcase, menu selection, and color support
+
+  - file: dot_zsh/aliases.zsh
+    reason: User workflow patterns and tool preferences
+    key_insight: Heavy use of Rust CLI tools (lsd, bat, fd, rg) and TUI apps (lazygit, yazi)
+
+  - file: dot_zshenv
+    reason: Environment initialization before .zshrc
+    key_insight: Configures PATH for mise and Cargo, minimal by design
+
+  - file: dot_config/starship.toml
+    reason: Prompt configuration revealing VCS tools
+    key_insight: Custom jj-starship integration, disabled standard git modules
+
+  - file: dot_zsh/envs.zsh
+    reason: Environment variables revealing language ecosystems
+    key_insight: Multi-language setup (Go, Rust, Scala, Android, .NET) with locale customization
+
+summary:
+  understanding_depth: 75%
+  key_findings:
+    - "Security-conscious dotfiles using age encryption with YubiKey hardware key"
+    - "Modern Rust-based toolchain replacing traditional Unix tools (lsd, fd, rg, bat, zoxide)"
+    - "Polyglot development environment with 6+ language ecosystems configured"
+    - "Terminal-first workflow with extensive TUI applications (lazygit, lazydocker, yazi, gitui)"
+    - "Modular ZSH configuration with 15+ separate modules for maintainability"
+    - "Experimenting with jujutsu (jj) VCS alongside Git"
+    - "Performance-optimized shell with selective plugin loading via sheldon"
+    - "Manages 17+ tool configurations in organized dot_config/ structure"
