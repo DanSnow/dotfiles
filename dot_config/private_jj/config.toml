@@ -8,6 +8,14 @@ name = "DanSnow"
 'HEAD' = '@-'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_nonempty(to)' = 'heads(::to ~ empty())'
+'main_branch()' = '''
+latest(
+  bookmarks(exact:"main") |
+  bookmarks(exact:"master") |
+  bookmarks(exact:"trunk") |
+  root()
+)
+'''
 
 [aliases]
 tug = [
@@ -42,3 +50,9 @@ jj log --no-graph -r 'closest_bookmark(@)' -T 'stringify(local_bookmarks.map(|b|
 [ui]
 diff-editor = ":builtin"
 default-command = "log"
+pager = "delta"
+diff-formatter = ":git"
+
+[merge-tools]
+delta.diff-expected-exit-codes = [0, 1]
+delta.diff-args = ["--side-by-side", "$left", "$right", "--width=$width"]

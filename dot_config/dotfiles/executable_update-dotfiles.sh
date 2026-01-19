@@ -19,6 +19,7 @@ dotfiles=(
     # Zsh
     "$HOME/.zshrc"
     "$HOME/.zsh"
+    "$HOME/.zshenv"
 
     # Config files
     "$HOME/.config/yazi"

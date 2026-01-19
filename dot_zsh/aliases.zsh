@@ -46,6 +46,7 @@ alias lg='lazygit'
 alias lj='lazyjj'
 alias ldo='lazydocker'
 alias jjtug='jj tug'
+alias jjnm='jj new "main_branch()"'
 
 # File Download
 if (( $+commands[curl] )); then
