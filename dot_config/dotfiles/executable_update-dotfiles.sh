@@ -29,6 +29,7 @@ dotfiles=(
     "$HOME/.config/lazygit"
     "$HOME/.config/lazydocker"
     "$HOME/.config/mise"
+    "$HOME/.config/sheldon"
     "$HOME/.config/ghostty"
     "$HOME/.config/topgrade.toml"
     "$HOME/.config/starship.toml"

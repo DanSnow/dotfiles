@@ -14,6 +14,9 @@ shell = "zsh"
 
 [plugins]
 
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
 [plugins.brew-zsh]
 local = "/opt/homebrew/share/zsh/site-functions"
 apply = ["fpath"]
@@ -23,24 +26,30 @@ github = "ohmyzsh/ohmyzsh"
 
 [plugins.vi-mode]
 github = "jeffreytse/zsh-vi-mode"
+apply = ["zcompile-source"]
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
 
 [plugins.zsh-you-should-use]
 github = "MichaelAquilina/zsh-you-should-use"
+apply = ["zcompile-defer"]
 
 [plugins.zsh-autopair]
 github = "hlissner/zsh-autopair"
+apply = ["zcompile-defer"]
 
 [plugins.fash-syntax-highlighting]
 github = "zdharma/fast-syntax-highlighting"
+apply = ["zcompile-defer"]
 
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"
+apply = ["zcompile-defer"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+apply = ["zcompile-defer"]
 
 [plugins.pnpm]
 github = "ntnyq/omz-plugin-pnpm"
@@ -51,10 +60,28 @@ apply = ["fpath"]
 
 [plugins.zfunctions]
 github = "mattmc3/zfunctions"
+apply = ["zcompile-defer"]
 
 [plugins.user-functions]
 local = "~/.config/zsh/functions"
 apply = ["fpath"]
+
+[templates]
+# A template that compiles and then sources the plugin
+zcompile-source = """
+{% for file in files %}
+  if [[ ! -f "{{ file }}.zwc" || "{{ file }}" -nt "{{ file }}.zwc" ]]; then
+    zcompile "{{ file }}"
+  fi
+  source "{{ file }}"
+{% endfor %}
+"""
+
+zcompile-defer = """
+{% for file in files %}
+  zsh-defer _smart_source "{{ file }}"
+{% endfor %}
+"""
 
 # For example:
 #

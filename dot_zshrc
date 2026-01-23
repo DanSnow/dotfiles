@@ -94,3 +94,6 @@ if [ -x "$(command -v atuin)" ]; then eval "$(atuin init zsh)"; fi
 
 # . "$HOME/.langflow/uv/env"
 # zprof
+
+# Added by Antigravity
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"

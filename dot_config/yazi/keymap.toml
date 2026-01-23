@@ -37,3 +37,10 @@ desc = "Compress with ouch"
 on = "<C-y>"
 run = ["plugin system-clipboard"]
 desc = "Copy to system keyboard"
+
+[[mgr.prepend_keymap]]
+on = "J"
+run = '''shell --
+  filename="%h"
+  magick $filename -strip ${filename:r}.jpg
+'''

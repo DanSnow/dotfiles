@@ -108,6 +108,7 @@ brew "dotnet"
 brew "dua-cli"
 brew "duckdb"
 brew "duti"
+brew "exiftool"
 brew "flatbuffers"
 brew "gabotechs/taps/dep-tree"
 brew "gallery-dl"
@@ -150,6 +151,7 @@ brew "parallel"
 brew "pgcli"
 brew "pkgconf"
 brew "poppler"
+brew "postgresql@17"
 brew "prek"
 brew "proto"
 brew "pwgen"
@@ -203,8 +205,8 @@ cask "font-iosevka-nerd-font"
 cask "fuse-t"
 cask "gimp"
 cask "github"
-cask "grayjay"
 cask "hashicorp/tap/hashicorp-vagrant"
+cask "imageoptim"
 cask "iterm2"
 cask "jellyfin-media-player"
 cask "jordanbaird-ice"
@@ -249,7 +251,6 @@ cask "universal-android-debloater"
 cask "vagrant"
 cask "veracrypt"
 cask "wailbrew"
-cask "yaak"
 cask "zettlr"
 cask "zoom"
 
@@ -262,7 +263,6 @@ mas "Log-Viewer", id: 1543753042
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pastel", id: 413897608
-mas "Pets Therapy", id: 1575542220
 mas "Red Lines Tools", id: 1469400117
 mas "RunCat", id: 1429033973
 mas "Saber", id: 1671523739
