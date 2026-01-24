@@ -1,4 +1,0 @@
-# function zo {
-  o "$(zoxide query $@)"
-# }
-# vim: set ft=zsh:
