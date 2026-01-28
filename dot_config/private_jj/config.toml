@@ -50,9 +50,4 @@ jj log --no-graph -r 'closest_bookmark(@)' -T 'stringify(local_bookmarks.map(|b|
 [ui]
 diff-editor = ":builtin"
 default-command = "log"
-pager = "delta"
-diff-formatter = ":git"
-
-[merge-tools]
-delta.diff-expected-exit-codes = [0, 1]
-delta.diff-args = ["--side-by-side", "$left", "$right", "--width=$width"]
+diff-formatter = ["difft", "--color=always", "$left", "$right"]
