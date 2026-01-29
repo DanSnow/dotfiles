@@ -4,3 +4,4 @@
 .config/yazi/plugins
 .config/ghostty/*.bak
 .zsh/envs.local.zsh
+**/__pycache__/**
