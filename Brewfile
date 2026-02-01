@@ -166,7 +166,6 @@ cask "atuin-desktop"
 cask "audacity"
 cask "bruno"
 cask "cap"
-cask "claude-code"
 cask "codex"
 cask "context"
 cask "cryptomator"
@@ -234,15 +233,21 @@ cask "zettlr"
 cask "zoom"
 mas "AdGuard Mini", id: 1440147259
 mas "DaisyDisk", id: 411643860
+mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
 mas "LocalSend", id: 1661733229
 mas "Log-Viewer", id: 1543753042
+mas "Numbers", id: 409203825
+mas "Numbers", id: 361304891
+mas "Pages", id: 409201541
 mas "Pastel", id: 413897608
+mas "Pets Therapy", id: 1575542220
 mas "Red Lines Tools", id: 1469400117
 mas "RunCat", id: 1429033973
 mas "Saber", id: 1671523739
 mas "ScreenBrush", id: 1233965871
 mas "Shareful", id: 1522267256
+mas "TickTick", id: 966085870
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650
@@ -513,3 +518,4 @@ go "github.com/ayn2op/discordo"
 go "golang.org/x/tools/gopls"
 go "honnef.co/go/tools/cmd/staticcheck"
 cargo "argus-cli"
+cargo "skill-manager"

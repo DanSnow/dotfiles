@@ -75,6 +75,18 @@ return {
       lang = "rust",
     },
   },
+  {
+    "max397574/better-escape.nvim",
+    opts = {
+      mappings = {
+        i = {
+          j = {
+            j = false,
+          },
+        },
+      },
+    },
+  },
   -- {
   --   "mawkler/refjump.nvim",
   --   keys = {

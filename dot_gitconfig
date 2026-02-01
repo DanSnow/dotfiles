@@ -4,7 +4,6 @@
   ui = true
 [core]
   editor = commit-msg-editor
-  pager = delta
 	excludesfile = ~/.gitignore_global
 [commit]
 	template = ~/.gitmessage

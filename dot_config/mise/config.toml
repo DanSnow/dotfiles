@@ -43,6 +43,10 @@ cargo-binstall = "latest"
 "cargo:claude-code-status-line" = "latest"
 "pipx:oraios/serena" = "main"
 "npm:happy-coder" = "latest"
+"npm:@openai/codex" = "latest"
+"pipx:basedpyright" = "latest"
+claude-code = "2.1.25"
+"cargo:https://github.com/davidbeesley/claude-chill" = "latest"
 
 [settings]
 
