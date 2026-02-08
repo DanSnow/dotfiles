@@ -4,10 +4,18 @@
 email = "dododavid006@gmail.com"
 name = "DanSnow"
 
+[fsmonitor]
+backend = "watchman"
+
+[fsmonitor.watchman]
+register-snapshot-trigger = true
+
 [revset-aliases]
 'HEAD' = '@-'
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_nonempty(to)' = 'heads(::to ~ empty())'
+'wip()' = 'description("") & ~empty()'
+'local_commits()' = '(bookmarks() & remote_bookmarks())::'
 'main_branch()' = '''
 latest(
   bookmarks(exact:"main") |

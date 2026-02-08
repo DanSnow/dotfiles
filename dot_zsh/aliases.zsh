@@ -46,9 +46,10 @@ alias lg='lazygit'
 alias lj='lazyjj'
 alias ldo='lazydocker'
 alias jjtug='jj tug'
+alias jjlwip='jj log -r "wip()" -s'
 alias jjnm='jj new "main_branch()"'
 alias update-dotfiles="$HOME/.config/dotfiles/update-dotfiles.sh"
-alias claude='claude-chill command claude'
+# alias claude='claude-chill command claude'
 
 # File Download
 if (( $+commands[curl] )); then
