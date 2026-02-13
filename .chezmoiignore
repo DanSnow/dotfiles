@@ -3,5 +3,6 @@
 .config/btop/btop.log
 .config/yazi/plugins
 .config/ghostty/*.bak
+.config/jj/repos
 .zsh/envs.local.zsh
 **/__pycache__/**

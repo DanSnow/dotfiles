@@ -97,3 +97,8 @@ if [ -x "$(command -v atuin)" ]; then eval "$(atuin init zsh)"; fi
 
 # Added by Antigravity
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+
+# Added by Spectra (openspec CLI)
+_spectra_path_prepend() { path=("$HOME/.local/bin" ${path:#$HOME/.local/bin}) }
+precmd_functions+=(_spectra_path_prepend)
+_spectra_path_prepend

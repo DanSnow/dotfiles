@@ -50,6 +50,10 @@ claude-code = "latest"
 "cargo:evcxr_repl" = "latest"
 "npm:vercel" = "latest"
 "npm:skills" = "latest"
+"pipx:sqlit-tui" = { version = "latest", extra = "postgres,duckdb" }
+"npm:@google/gemini-cli" = "latest"
+"pipx:marimo" = { version = "latest", extra = "recommended,mcp" }
+"npm:react-doctor" = "latest"
 
 [settings]
 
