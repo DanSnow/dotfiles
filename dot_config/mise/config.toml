@@ -54,6 +54,7 @@ claude-code = "latest"
 "npm:@google/gemini-cli" = "latest"
 "pipx:marimo" = { version = "latest", extra = "recommended,mcp" }
 "npm:react-doctor" = "latest"
+terraform = "latest"
 
 [settings]
 
