@@ -1,0 +1,114 @@
+{
+  "skill_name": "design-extractor",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "I've got a React + Tailwind v4 app. My CSS has palette variables like --brand-teal and --ink-dark but no semantic layer, and my primary button uses white text on a light teal which probably fails contrast. Also I'm copy-pasting nav link blocks everywhere. Here's a snippet of my styles.css:\n\n```css\n:root {\n  --brand-teal: #4fb8b2;\n  --brand-teal-deep: #328f97;\n  --ink-dark: #173a40;\n  --ink-soft: #416166;\n  --line: rgba(23,58,64,0.14);\n}\n```\n\nAnd my nav links look like this, repeated 5 times:\n```tsx\n<Link to={item.to} className=\"flex items-center gap-3 px-3 py-2.5 text-[var(--ink-soft)] hover:text-[var(--ink-dark)] [&.active]:text-[var(--brand-teal-deep)]\">\n  <span>{item.icon}</span>\n  {item.label}\n</Link>\n```\n\nCan you audit this and tell me what to extract?",
+      "expected_output": "A structured proposal covering: (1) a semantic token table, (2) contrast ratio check on the button, (3) component candidates with props and file paths, (4) ordered migration plan. No code written.",
+      "assertions": [
+        {
+          "name": "proposal-not-code",
+          "description": "Output is a proposal/plan, not actual implementation code or file edits"
+        },
+        {
+          "name": "token-table-present",
+          "description": "Proposal contains a table or list of semantic tokens with names, values, and roles"
+        },
+        {
+          "name": "contrast-ratio-mentioned",
+          "description": "Proposal mentions WCAG AA contrast ratio check for the primary button"
+        },
+        {
+          "name": "component-candidate-listed",
+          "description": "Proposal identifies the nav link block as a component extraction candidate with props"
+        },
+        {
+          "name": "migration-order-given",
+          "description": "Proposal includes an ordered migration plan"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "hey can you look at my tailwind project and find all the places where I'm hardcoding colors instead of using css variables? I want to set up a proper token system.\n\nHere's what I'm seeing in my components:\n```tsx\n// Button.tsx\n<button className=\"bg-[#4fb8b2] text-white hover:bg-[#328f97]\">\n\n// Card.tsx  \n<div className=\"border border-[rgba(23,58,64,0.14)] bg-white/80\">\n\n// Nav.tsx\n<a className=\"text-[#416166] hover:text-[#173a40]\">\n```\n\nMy styles.css has some variables but I'm not using them consistently.",
+      "expected_output": "An audit identifying the hardcoded hex values, followed by a proposal showing how to centralize them with semantic CSS variable names. Should not write any files.",
+      "assertions": [
+        {
+          "name": "identifies-hardcoded-values",
+          "description": "Identifies the specific hardcoded hex/rgba values from the snippets"
+        },
+        {
+          "name": "proposes-specific-token-names",
+          "description": "Proposes specific CSS variable names (e.g. --color-primary, --color-border) not just 'use variables'"
+        },
+        {
+          "name": "maps-values-to-tokens",
+          "description": "Shows which hardcoded value maps to which proposed token"
+        },
+        {
+          "name": "no-code-written",
+          "description": "Does not write or edit any files — only proposes changes"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "My React app has a ton of UI duplication. Every page has this same pattern at the top:\n\n```tsx\n// contacts.tsx, journal.tsx, reminders.tsx, settings.tsx — all have:\n<div className=\"flex items-center justify-between mb-6\">\n  <div>\n    <p className=\"text-xs uppercase tracking-widest text-green-700\">People</p>\n    <h1 className=\"font-serif text-2xl font-bold\">Contacts</h1>\n  </div>\n  <button className=\"bg-teal-600 text-white px-4 py-2 rounded-xl\">Add contact</button>\n</div>\n```\n\nAnd every modal is a hand-rolled overlay:\n```tsx\n<div className=\"fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm\">\n  <div className=\"bg-white rounded-2xl w-full max-w-md p-6\">\n    ...\n  </div>\n</div>\n```\n\nI want to extract shared components but need a plan first.",
+      "expected_output": "A component extraction proposal naming PageHeader and Modal/Dialog as candidates, with prop interfaces defined and instance counts noted. Should recommend extraction order.",
+      "assertions": [
+        {
+          "name": "names-pageheader-component",
+          "description": "Proposes a PageHeader (or equivalent) component for the kicker+title+action pattern"
+        },
+        {
+          "name": "names-modal-component",
+          "description": "Proposes a Modal or Dialog component for the hand-rolled overlay pattern"
+        },
+        {
+          "name": "proposes-prop-interfaces",
+          "description": "Defines specific props for at least one proposed component (e.g. kicker, title, action)"
+        },
+        {
+          "name": "quantifies-duplication",
+          "description": "Notes how many files/instances the pattern appears in"
+        },
+        {
+          "name": "extraction-order-given",
+          "description": "Recommends an order for extraction"
+        }
+      ]
+    }
+    ,
+    {
+      "id": 3,
+      "prompt": "I'm working on a React + Tailwind app and every time I need a button I copy-paste the className. I've got at least 4 different styles spread across maybe 10 files:\n\n```tsx\n// primary CTA — used in 6 places\n<button className=\"inline-flex items-center gap-2 rounded-xl bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-[var(--primary-foreground)] shadow-sm hover:bg-[var(--primary-hover)] transition\">\n\n// outline / secondary — 4 places\n<button className=\"inline-flex items-center gap-1.5 rounded-xl border border-[var(--border)] px-3 py-2 text-sm font-medium text-[var(--muted-foreground)] hover:bg-white/60 transition\">\n\n// ghost icon buttons — 8 places  \n<button className=\"p-1.5 rounded-lg hover:bg-white/80 transition text-muted-foreground\">\n\n// destructive icon — 3 places\n<button className=\"p-2 rounded-xl border border-red-100 hover:bg-red-50 transition text-red-400\">\n```\n\nI already have `class-variance-authority` installed and `@base-ui/react` for headless primitives. What should I extract and how?",
+      "expected_output": "A styled-primitive extraction proposal for a Button component using cva, with variants (default/outline/ghost/destructive) and sizes (default/icon) defined, headless primitive chosen, and a migration plan covering all call sites. No code written yet.",
+      "assertions": [
+        {
+          "name": "identifies-button-as-styled-primitive",
+          "description": "Recognizes the duplication as a styled primitive (variant system) rather than a structural JSX copy-paste"
+        },
+        {
+          "name": "proposes-cva-variants",
+          "description": "Proposes using cva (class-variance-authority) with specific named variants matching the patterns shown"
+        },
+        {
+          "name": "variant-names-match",
+          "description": "Proposed variant names cover at least: default/primary, outline, ghost, destructive"
+        },
+        {
+          "name": "mentions-headless-primitive",
+          "description": "Recommends using the existing @base-ui/react or similar headless primitive rather than a raw <button>"
+        },
+        {
+          "name": "no-code-written",
+          "description": "Does not write or edit any files — only proposes the extraction"
+        },
+        {
+          "name": "migration-plan-given",
+          "description": "Includes a migration plan or call-site count for replacing the inline className strings"
+        }
+      ]
+    }
+  ]
+}

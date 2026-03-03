@@ -1,5 +1,6 @@
 tap "appleboy/tap"
 tap "buo/cask-upgrade"
+tap "debba/tabularis"
 tap "dopplerhq/cli"
 tap "gromgit/brewtils"
 tap "hashicorp/tap"
@@ -12,6 +13,7 @@ tap "ksdme/tap"
 tap "macos-fuse-t/cask"
 tap "manaflow-ai/cmux"
 tap "nikitabobko/tap"
+tap "open-pencil/tap"
 tap "oven-sh/bun"
 tap "postrv/forgemax"
 tap "raggi/ale"
@@ -19,6 +21,7 @@ tap "restatedev/tap"
 tap "surge-downloader/tap"
 tap "wader/tap"
 tap "wickenico/wailbrew"
+tap "zippoxer/tap"
 
 # Essential
 brew "age"
@@ -157,6 +160,7 @@ brew "rbw"
 brew "rclone"
 brew "restatedev/tap/restate"
 brew "restatedev/tap/restate-server"
+brew "rtk"
 brew "sccache"
 brew "scrcpy"
 brew "snitch"
@@ -180,9 +184,11 @@ brew "woff2"
 brew "xplr"
 brew "yt-dlp"
 brew "yubico-piv-tool"
+brew "zippoxer/tap/recall"
 cask "anytype"
 cask "applite"
 cask "audacity"
+cask "bettercapture"
 cask "cap"
 cask "codex"
 cask "context"
@@ -190,6 +196,7 @@ cask "cryptomator"
 cask "cutter"
 cask "cyberduck"
 cask "db-browser-for-sqlite"
+cask "debba/tabularis/tabularis"
 cask "discord"
 cask "docker-desktop"
 cask "easy-move+resize"
@@ -224,6 +231,7 @@ cask "minecraft"
 cask "nikitabobko/tap/aerospace"
 cask "obs"
 cask "opal-app"
+cask "open-pencil/tap/open-pencil"
 cask "openineditor-lite"
 cask "openinterminal-lite"
 cask "orbstack"
@@ -250,23 +258,19 @@ cask "wailbrew"
 cask "zettlr"
 cask "zoom"
 
-mas "AdGuard Mini", id: 1440147259
 mas "DaisyDisk", id: 411643860
 mas "Keynote", id: 409183694
 mas "LINE", id: 539883307
 mas "LocalSend", id: 1661733229
-mas "Log-Viewer", id: 1543753042
 mas "Numbers", id: 409203825
 mas "Numbers", id: 361304891
 mas "Pages", id: 409201541
 mas "Pastel", id: 413897608
-mas "Pets Therapy", id: 1575542220
 mas "Red Lines Tools", id: 1469400117
 mas "RunCat", id: 1429033973
 mas "Saber", id: 1671523739
 mas "ScreenBrush", id: 1233965871
 mas "Shareful", id: 1522267256
-mas "TickTick", id: 966085870
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650
@@ -372,6 +376,7 @@ vscode "hashicorp.terraform"
 vscode "heybourn.headwind"
 vscode "highagency.pencildev"
 vscode "hverlin.mise-vscode"
+vscode "inf1nite-lo0p.css-color-converter"
 vscode "inferrinizzard.prettier-sql-vscode"
 vscode "inlang.vs-code-extension"
 vscode "jakebecker.elixir-ls"
@@ -459,6 +464,7 @@ vscode "pflannery.vscode-versionlens"
 vscode "phoenisx.cssvar"
 vscode "pkief.material-icon-theme"
 vscode "planbcoding.vscode-react-refactor"
+vscode "pomdtr.excalidraw-editor"
 vscode "pomsky-lang.pomsky-vscode"
 vscode "prql-lang.prql-vscode"
 vscode "quicktype.quicktype"
@@ -542,7 +548,4 @@ go "honnef.co/go/tools/cmd/staticcheck"
 
 cargo "argus-cli"
 cargo "skill-manager"
-
-uv "dotbins"
-uv "magika"
 # vim: ft=ruby

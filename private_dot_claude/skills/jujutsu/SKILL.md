@@ -113,6 +113,24 @@ Without this, `jj git push` will fail with "Refusing to create new remote bookma
 
 ## Common Patterns
 
+### Untracking Files Before Committing
+
+When `jj status` shows files that should not be committed (e.g., build artifacts, secrets, uploaded files):
+
+```bash
+# 1. Add the path to .gitignore first
+echo "uploads/" >> .gitignore
+
+# 2. Untrack the file(s) from the working copy
+jj file untrack uploads/some-file.png
+jj file untrack uploads/           # untrack entire directory
+
+# 3. Verify they're gone from status
+jj status
+```
+
+**Note:** `jj file untrack` removes the file from jj's tracking without deleting it from disk. Always add to `.gitignore` first so it stays untracked on future snapshots.
+
 ### Multi-line Commit Messages
 ```bash
 jj commit -m "$(cat <<'EOF'

@@ -55,6 +55,8 @@ claude-code = "latest"
 "pipx:marimo" = { version = "latest", extra = "recommended,mcp" }
 "npm:react-doctor" = "latest"
 terraform = "latest"
+"pipx:ipython" = "latest"
+"npm:@open-pencil/mcp" = "latest"
 
 [settings]
 
