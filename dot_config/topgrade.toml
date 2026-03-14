@@ -23,6 +23,7 @@ disable = [
   "shell",
   "cargo",
   "pipx",
+  "skills",
 ]
 
 # Ignore failures for these steps

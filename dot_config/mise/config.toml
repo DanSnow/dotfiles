@@ -1,6 +1,6 @@
 [tools]
 python = "3.12"
-node = "22"
+node = "24"
 cargo-binstall = "latest"
 "cargo:bacon" = "latest"
 "cargo:cargo-expand" = "latest"
@@ -57,6 +57,8 @@ claude-code = "latest"
 terraform = "latest"
 "pipx:ipython" = "latest"
 "npm:@open-pencil/mcp" = "latest"
+"github:DanSnow/kn" = "latest"
+"pipx:sherlock-project" = "latest"
 
 [settings]
 

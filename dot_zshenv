@@ -4,5 +4,7 @@ typeset -U path PATH
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/mise/shims:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 
 # ZDOTDIR=/
+. "/Users/snow/.local/share/bob/env/env.sh"

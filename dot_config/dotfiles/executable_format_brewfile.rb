@@ -18,6 +18,7 @@ class BrewfileParser
       go: [],
       cargo: [],
       uv: [],
+      npm: [],
     }
   end
 
@@ -51,6 +52,10 @@ class BrewfileParser
 
   def go(package_path)
     @packages[:go] << Package.new(:go, package_path, nil)
+  end
+
+  def npm(package_path)
+    @packages[:npm] = Package.new(:npm, package_path, nil)
   end
 
   def cargo(package_path)
@@ -196,6 +201,13 @@ class BrewfileFormatter
       end
     end
 
+    unless @packages[:npm].empty?
+      output << ""
+      @packages[:npm].sort_by(&:name).each do |pkg|
+        output << format_npm(pkg)
+      end
+    end
+
     output << "# vim: ft=ruby"
     output << ""
 
@@ -238,6 +250,10 @@ class BrewfileFormatter
 
   def format_uv(pkg)
     "uv \"#{pkg.name}\""
+  end
+
+  def format_npm(pkg)
+    "npm \"#{pkg.name}\""
   end
 end
 

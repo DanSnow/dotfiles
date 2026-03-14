@@ -39,9 +39,9 @@ apply = ["zcompile-defer"]
 github = "hlissner/zsh-autopair"
 apply = ["zcompile-defer"]
 
-[plugins.fash-syntax-highlighting]
-github = "zdharma/fast-syntax-highlighting"
-apply = ["zcompile-defer"]
+# [plugins.fash-syntax-highlighting]
+# github = "zdharma/fast-syntax-highlighting"
+# apply = ["zcompile-defer"]
 
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"

@@ -20,13 +20,13 @@ hash = "85316b5e9abeae2531d3e5d02a094381"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "1962818"
+rev = "43c6978"
 hash = "26db011a778f261d730d4f5f8bf24b3f"
 
 [[plugin.deps]]
 use = "Rolv-Apneseth/starship"
-rev = "eca1861"
-hash = "e519d894e94ded741e06aae4d4775981"
+rev = "a837101"
+hash = "635b0feb9215772d22020eb0abf0bb34"
 
 [[plugin.deps]]
 use = "wylie102/duckdb"
@@ -35,7 +35,7 @@ hash = "87b9233a74325e95011670ed20bbd0d4"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "1962818"
+rev = "43c6978"
 hash = "7a4b4237223aaa94e589d1c01a23542a"
 
 [[plugin.deps]]
