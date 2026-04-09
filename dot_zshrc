@@ -102,8 +102,14 @@ export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 if [[ -z ${path[(r)$HOME/.local/bin]} ]]; then
   path=("$HOME/.local/bin" $path)
 fi
-eval "$(/opt/homebrew/bin/zsh-patina activate)"
 eval "$(_kn init --shell zsh)"
 
 # try-rs integration
 source '/Users/snow/.config/try-rs/try-rs.zsh'
+eval "$(am init zsh)"
+eval "$(_MARIMO_COMPLETE=zsh_source marimo)"
+
+# ByteRover CLI
+export PATH="$HOME/.brv-cli/bin:$PATH"
+eval "$(/opt/homebrew/bin/zsh-patina activate)"
+eval "$(pitchfork activate zsh)"

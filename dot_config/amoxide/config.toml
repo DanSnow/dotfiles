@@ -1,0 +1,16 @@
+[aliases]
+jjbsmr = "jj bookmark set -r 'remote_bookmarks() & main_branch()' main"
+jjrbm = "jj rebase -o 'main_branch()'"
+pfdn = "pitchfork stop"
+pfl = "pitchfork logs"
+pfls = "pitchfork ls"
+pfrs = "pitchfork restart"
+pfup = "pitchfork start"
+pfupl = "pitchfork start --local"
+
+[shell]
+
+[logging]
+
+[update]
+check = true

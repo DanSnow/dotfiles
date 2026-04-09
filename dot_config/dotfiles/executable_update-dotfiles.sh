@@ -36,6 +36,7 @@ dotfiles=(
     "$HOME/.config/nvim"
     "$HOME/.config/git"
     "$HOME/.config/zsh"
+    "$HOME/.config/amoxide"
 
     # Git
     "$HOME/.gitconfig"

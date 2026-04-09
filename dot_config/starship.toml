@@ -23,3 +23,30 @@ command = "jj-starship"
 detect_folders = [".jj", ".git"]
 shell = ["sh"]
 format = "$output "
+
+[claude_context]
+format = "[$gauge $percentage]($style) "
+gauge_width = 10
+
+[[claude_context.display]]
+threshold = 0
+style = "bold green"
+
+[[claude_context.display]]
+threshold = 50
+style = "bold yellow"
+
+[[claude_context.display]]
+threshold = 75
+style = "bold orange"
+
+[[claude_context.display]]
+threshold = 90
+style = "bold red"
+
+[claude_cost]
+format = "[$symbol$cost]($style) "
+symbol = "💰 "
+
+[profiles]
+claude-code = "$claude_model${custom.jj} $claude_context $claude_cost"

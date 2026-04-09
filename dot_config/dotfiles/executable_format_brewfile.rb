@@ -38,8 +38,9 @@ class BrewfileParser
     @packages[:brews] << Package.new(:brew, name, options_str)
   end
 
-  def cask(name)
-    @packages[:casks] << Package.new(:cask, name, nil)
+  def cask(name, **options)
+    options_str = options.empty? ? nil : options.map { |k, v| "#{k}: #{v}" }.join(', ')
+    @packages[:casks] << Package.new(:cask, name, options_str)
   end
 
   def mas(name, id:)
@@ -55,7 +56,7 @@ class BrewfileParser
   end
 
   def npm(package_path)
-    @packages[:npm] = Package.new(:npm, package_path, nil)
+    @packages[:npm] << Package.new(:npm, package_path, nil)
   end
 
   def cargo(package_path)
@@ -229,7 +230,11 @@ class BrewfileFormatter
   end
 
   def format_cask(pkg)
-    "cask \"#{pkg.name}\""
+    if pkg.options
+      "cask \"#{pkg.name}\", #{pkg.options}"
+    else
+      "cask \"#{pkg.name}\""
+    end
   end
 
   def format_mas(pkg)

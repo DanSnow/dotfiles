@@ -18,8 +18,9 @@ setopt CORRECT
 # This makes cd=pushd
 setopt AUTO_PUSHD
 
-# This will use named dirs when possible
-setopt AUTO_NAME_DIRS
+# AUTO_NAME_DIRS disabled: causes exported path vars (e.g. _ZSH_PATINA_ENCODED_PWD) to
+# pollute %~ expansion, showing garbled names in terminal titles
+# setopt AUTO_NAME_DIRS
 
 # If we have a glob this will expand it
 setopt GLOB_COMPLETE

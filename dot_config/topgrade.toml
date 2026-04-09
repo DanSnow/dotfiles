@@ -24,6 +24,7 @@ disable = [
   "cargo",
   "pipx",
   "skills",
+  "microsoft_office",
 ]
 
 # Ignore failures for these steps
