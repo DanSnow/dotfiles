@@ -6,6 +6,10 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
 export PATH="$HOME/.brv-cli/bin:$PATH"
+export PATH="$HOME/.nub/shims:$PATH"
 
 # ZDOTDIR=/
 . "/Users/snow/.local/share/bob/env/env.sh"
+
+# nub shims
+export PATH="$HOME/.nub/shims:$PATH"

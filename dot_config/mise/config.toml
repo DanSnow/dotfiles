@@ -25,8 +25,6 @@ cargo-binstall = "latest"
 "cargo:parqeye" = "latest"
 "cargo:pik" = "latest"
 "cargo:run-kit" = "latest"
-"cargo:rustowl" = "latest"
-"cargo:sea-orm-cli" = "^2.0.0-rc"
 "cargo:sendme" = "latest"
 "cargo:sqlx-cli" = "latest"
 "cargo:tealdeer" = "latest"
@@ -65,6 +63,7 @@ aube = "latest"
 "cargo:pluck-mcp" = "latest"
 "cargo:pluck-cli" = "latest"
 "cargo:patent" = "latest"
+nub = "latest"
 
 [settings]
 

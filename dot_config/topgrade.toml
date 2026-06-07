@@ -25,6 +25,7 @@ disable = [
   "pipx",
   "skills",
   "microsoft_office",
+  "pip3",
 ]
 
 # Ignore failures for these steps

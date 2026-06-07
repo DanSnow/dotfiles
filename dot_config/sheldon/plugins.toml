@@ -47,9 +47,19 @@ apply = ["zcompile-defer"]
 github = "Aloxaf/fzf-tab"
 apply = ["zcompile-defer"]
 
-[plugins.zsh-autosuggestions]
-github = "zsh-users/zsh-autosuggestions"
-apply = ["zcompile-defer"]
+# [plugins.zsh-autosuggestions]
+# github = "zsh-users/zsh-autosuggestions"
+# apply = ["zcompile-defer"]
+
+[plugins.deja]
+github = "Giammarco-Ferranti/deja"
+# apply = ["zcompile-defer"]
+
+[plugins.deja.hooks]
+pre = """
+export DEJA_CYCLE_KEY='^J'
+"""
+
 
 [plugins.pnpm]
 github = "ntnyq/omz-plugin-pnpm"

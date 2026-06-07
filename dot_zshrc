@@ -113,3 +113,6 @@ eval "$(_MARIMO_COMPLETE=zsh_source marimo)"
 export PATH="$HOME/.brv-cli/bin:$PATH"
 eval "$(/opt/homebrew/bin/zsh-patina activate)"
 eval "$(pitchfork activate zsh)"
+
+# nub shims
+export PATH="$HOME/.nub/shims:$PATH"
