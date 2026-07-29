@@ -10,8 +10,8 @@ hash = "50da29476e744dba37d77fb209328fd1"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "406ce6c"
-hash = "f5afc904d5106ee368c8aa2ded43bd74"
+rev = "cfe4f50"
+hash = "eff5702573b6cfba61e4ac8b1969629a"
 
 [[plugin.deps]]
 use = "Lil-Dank/lazygit"
@@ -20,13 +20,13 @@ hash = "6ea5f37c7f219671ec504cb8311f889d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "4c63ed3"
-hash = "88e56a64b7ce7c4314427452343fef17"
+rev = "58c4f4e"
+hash = "5bb0bfab901d3601c370eafdd66edd31"
 
 [[plugin.deps]]
 use = "Rolv-Apneseth/starship"
-rev = "159eaba"
-hash = "7de446280b1ba8c49ffd86dbc24bbbe6"
+rev = "ea92cf4"
+hash = "9776f378459072b6c2875eae5addc49d"
 
 [[plugin.deps]]
 use = "wylie102/duckdb"
@@ -35,13 +35,13 @@ hash = "87b9233a74325e95011670ed20bbd0d4"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "4c63ed3"
+rev = "58c4f4e"
 hash = "7a4b4237223aaa94e589d1c01a23542a"
 
 [[plugin.deps]]
 use = "orhnk/system-clipboard"
-rev = "75a5330"
-hash = "2eca70f99d25c661e0a92000843d001e"
+rev = "ed946c3"
+hash = "43fff18b85896a499105f621de458ea1"
 
 [flavor]
 deps = []

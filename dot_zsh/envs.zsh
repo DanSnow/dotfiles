@@ -37,8 +37,6 @@ else
   export LANGUAGE='en'
 fi
 
-export RUSTC_WRAPPER='sccache'
-
 if [[ -f "$HOME/.zsh/envs.local.zsh" ]]; then
   source "$HOME/.zsh/envs.local.zsh"
 fi

@@ -14,7 +14,7 @@ return {
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.pkl" },
-  { import = "astrocommunity.pack.python-ruff" },
+  { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.terraform" },

@@ -57,6 +57,8 @@ done
 echo ""
 echo "Dumping Homebrew packages to Brewfile..."
 
+cd "$HOME"
+
 # Dump current brew packages to Brewfile
 if command -v brew &> /dev/null; then
     brew bundle dump --file=Brewfile --force
