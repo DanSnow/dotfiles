@@ -1,0 +1,22 @@
+#!/bin/zsh
+##? TODO: Add description. Use ##? comments for funchelp docs.
+
+if [[ -f "fnox.toml" ]]; then
+  echo "fnox.toml exist, exit"
+  return 1
+fi
+
+cat > fnox.toml <<EOD
+default_provider = "age"
+
+[providers.age]
+type = "age"
+recipients = ["age1vee787sc944wuuelh4784weezhn2sms3hrxznpmv6z840retf4vss5ryx4"]
+
+[secrets]
+EOD
+
+echo "done"
+
+# vim: ft=zsh sw=2 ts=2 et
+

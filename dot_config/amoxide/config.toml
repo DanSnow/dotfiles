@@ -1,4 +1,5 @@
 [aliases]
+jjbch = "jj bookmark create -r HEAD"
 jjbsmr = "jj bookmark set -r 'remote_bookmarks() & main_branch()' main"
 jjbth = "jj closestbookmark | xargs jj bookmark track"
 jjrbm = "jj rebase -o 'main_branch()'"

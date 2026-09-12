@@ -1,6 +1,6 @@
 [tools]
 python = "3.12"
-node = "24"
+node = "26"
 cargo-binstall = "latest"
 "cargo:bacon" = "latest"
 "cargo:cargo-expand" = "latest"
@@ -42,27 +42,26 @@ cargo-binstall = "latest"
 claude-code = "latest"
 "cargo:https://github.com/davidbeesley/claude-chill" = "latest"
 "cargo:evcxr_repl" = "latest"
-"pipx:sqlit-tui" = { version = "latest", extra = "postgres,duckdb" }
-"pipx:marimo" = { version = "latest", extra = "recommended,mcp" }
+"pipx:sqlit-tui" = { version = "latest", extras = ["postgres", "duckdb"] }
+"pipx:marimo" = { version = "latest", extras = ["recommended", "mcp"] }
 terraform = "latest"
 "pipx:ipython" = "latest"
 "npm:@open-pencil/mcp" = "latest"
 "github:DanSnow/kn" = "latest"
 "pipx:sherlock-project" = "latest"
 pitchfork = "latest"
-aube = "latest"
 "cargo:https://github.com/flameshikari/rgc.git" = "latest"
 "cargo:matchmaker-cli" = "latest"
 "cargo:pluck-mcp" = "latest"
 "cargo:pluck-cli" = "latest"
 "cargo:patent" = "latest"
-nub = { version = "latest", allow_builds = ["@nubjs/nub"] }
-"github:kunobi-ninja/kache" = "latest"
+nub = { version = "latest" }
 "aqua:vercel-labs/agent-browser" = "latest"
 mr-boxington = "latest"
 pnpm = "12"
 "cargo:jscpd" = "latest"
 "github:ByteAtATime/oweka" = "latest"
+"pipx:iredis" = "latest"
 
 [settings]
 

@@ -1,3 +1,4 @@
+eval "$(atuin pty-proxy init zsh)"
 # OPENSPEC:START
 # OpenSpec shell completions configuration
 fpath=("/Users/snow/.oh-my-zsh/custom/completions" $fpath)
@@ -113,6 +114,3 @@ eval "$(_MARIMO_COMPLETE=zsh_source marimo)"
 export PATH="$HOME/.brv-cli/bin:$PATH"
 eval "$(/opt/homebrew/bin/zsh-patina activate)"
 eval "$(pitchfork activate zsh)"
-
-# nub shims
-export PATH="$HOME/.nub/shims:$PATH"

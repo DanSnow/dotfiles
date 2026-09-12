@@ -10,6 +10,3 @@ export PATH="$HOME/.nub/shims:$PATH"
 
 # ZDOTDIR=/
 . "/Users/snow/.local/share/bob/env/env.sh"
-
-# nub shims
-export PATH="$HOME/.nub/shims:$PATH"

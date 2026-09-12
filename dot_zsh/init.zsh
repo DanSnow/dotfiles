@@ -1,6 +1,7 @@
 
 source $HOME/.zsh/envs.zsh
 source $HOME/.zsh/config.zsh
+source $HOME/.zsh/muxy.zsh
 source $HOME/.zsh/spaceship.zsh
 source $HOME/.zsh/dotbins.zsh
 source $HOME/.zsh/plugin-settings.zsh
