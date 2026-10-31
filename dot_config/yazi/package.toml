@@ -20,7 +20,7 @@ hash = "6ea5f37c7f219671ec504cb8311f889d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "896fa5a"
+rev = "25d992d"
 hash = "347cc6b190eb0c2fd60513cc7ae37412"
 
 [[plugin.deps]]
@@ -35,7 +35,7 @@ hash = "87b9233a74325e95011670ed20bbd0d4"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:jump-to-char"
-rev = "896fa5a"
+rev = "25d992d"
 hash = "7a4b4237223aaa94e589d1c01a23542a"
 
 [[plugin.deps]]

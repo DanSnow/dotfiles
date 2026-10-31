@@ -49,7 +49,6 @@ brew "jq"
 brew "lsd"
 brew "macos-trash", link: true
 brew "mas"
-brew "mise"
 brew "ouch"
 brew "ripgrep"
 brew "sheldon"
@@ -181,6 +180,7 @@ brew "syft"
 brew "tabiew"
 brew "telnet"
 brew "tokei"
+brew "tree-sitter-cli"
 brew "trippy"
 brew "trufflehog"
 brew "tuicr"
@@ -220,6 +220,7 @@ cask "fuse-t"
 cask "github"
 cask "godot"
 cask "helium-browser"
+cask "herdr-app"
 cask "homebrew-app"
 cask "imageoptim"
 cask "iterm2"
@@ -241,6 +242,7 @@ cask "mole-app"
 cask "monitorcontrol"
 cask "muxy-app/tap/muxy", trusted: true
 cask "neodisk"
+cask "neovide-app"
 cask "nikitabobko/tap/aerospace", trusted: true
 cask "notion"
 cask "obs"
@@ -282,7 +284,6 @@ mas "RunCatNeo", id: 6757801838
 mas "Saber", id: 1671523739
 mas "ScreenBrush", id: 1233965871
 mas "Shareful", id: 1522267256
-mas "TickTick", id: 966085870
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650

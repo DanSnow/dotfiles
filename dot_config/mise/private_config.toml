@@ -1,3 +1,4 @@
+wrappers = { cargo = { command = "mbx", env = { MBX_CARGO_SHIM_MODE = "1" } } }
 [tools]
 python = "3.12"
 node = "26"
@@ -57,7 +58,7 @@ pitchfork = "latest"
 "cargo:patent" = "latest"
 nub = { version = "latest" }
 "aqua:vercel-labs/agent-browser" = "latest"
-mr-boxington = "latest"
+mr-boxington = { version = "latest", workflow = "release.yml@refs/heads/main" }
 pnpm = "12"
 "cargo:jscpd" = "latest"
 "github:ByteAtATime/oweka" = "latest"

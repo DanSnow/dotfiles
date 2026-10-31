@@ -1,0 +1,11 @@
+#!/bin/zsh
+##? open herdr space at current directory or specific directory
+
+local path="$(realpath "${1:-${PWD}}")"
+
+echo "$path"
+
+"$HOME/.local/bin/herdr-app" do space.new --folder "$path"
+
+# vim: ft=zsh sw=2 ts=2 et
+

@@ -27,6 +27,7 @@ return {
   { import = "astrocommunity.motion.mini-surround" },
   { import = "astrocommunity.motion.nvim-spider" },
   { import = "astrocommunity.recipes.vscode" },
+  { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
   { import = "astrocommunity.file-explorer.oil-nvim" },

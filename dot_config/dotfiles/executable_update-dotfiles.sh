@@ -59,6 +59,9 @@ echo "Dumping Homebrew packages to Brewfile..."
 
 cd "$HOME"
 
+# patch path to let brew can find cargo
+PATH="$HOME/.cargo/bin:$PATH"
+
 # Dump current brew packages to Brewfile
 if command -v brew &> /dev/null; then
     brew bundle dump --file=Brewfile --force

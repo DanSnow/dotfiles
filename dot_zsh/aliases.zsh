@@ -11,7 +11,7 @@ alias tmux='TERM=xterm-256color tmux'
 alias rm='trash'
 alias did="vim +'normal Go' +'r!env LC_ALL=C date' ~/did"
 alias idea='eureka'
-alias rtv='EDITOR=avim RTV_PAGER="bat --paging=always -l=md -p" BROWSER="vivaldi --password-store=gnome" rtv'
+alias rtv='EDITOR=nvim RTV_PAGER="bat --paging=always -l=md -p" BROWSER="vivaldi --password-store=gnome" rtv'
 alias ytdl='yt-dlp'
 alias gadl='gallery-dl'
 alias fm='yazi'
@@ -32,7 +32,7 @@ alias calc='noglob calc'
 alias kalk='noglob kalker'
 alias path='echo -e ${PATH//:/\\n}'
 alias myip='curl -4 https://ifconfig.co'
-alias vim=avim
+alias vim=nvim
 alias zel='zellij'
 alias j='__zoxide_zi'
 alias src="exec zsh"
