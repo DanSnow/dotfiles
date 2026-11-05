@@ -1,0 +1,35 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "package-json-deps-edit"
+why = "Editing dependency fields in package.json by hand leaves pnpm-lock.yaml out of sync; pnpm add/remove keeps them together."
+mode = "deny"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+message = "Direct modification of dependency fields in package.json is prohibited. Use `pnpm add <package>` or `pnpm remove <package>` via Bash so pnpm-lock.yaml stays in sync."
+suggest = "pnpm add PACKAGE"
+
+[[rule.match]]
+tool = ["Edit", "MultiEdit"]
+paths = "package.json"
+input = { new_string = "*ependencies*" }
+
+[[rule.match]]
+tool = ["Edit", "MultiEdit"]
+paths = "package.json"
+input = { old_string = "*ependencies*" }
+
+[[rule.match]]
+tool = "Write"
+paths = "package.json"
+input = { content = "*ependencies*" }
+
+[rule.examples]
+fires = [
+  { tool = "Edit", path = "package.json", input = { old_string = "\"a\": \"1\"", new_string = "\"dependencies\": {\"a\": \"1\"}" } },
+  { tool = "Write", path = "web/package.json", input = { content = "{\"devDependencies\": {}}" } },
+]
+quiet = [
+  { tool = "Edit", path = "package.json", input = { old_string = "\"version\": \"1.0.0\"", new_string = "\"version\": \"1.0.1\"" } },
+  { tool = "Edit", path = "src/deps.ts", input = { old_string = "a", new_string = "dependencies" } },
+]

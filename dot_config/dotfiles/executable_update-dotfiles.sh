@@ -37,6 +37,7 @@ dotfiles=(
     "$HOME/.config/git"
     "$HOME/.config/zsh"
     "$HOME/.config/amoxide"
+    "$HOME/.config/jouet"
 
     # Git
     "$HOME/.gitconfig"

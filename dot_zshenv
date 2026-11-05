@@ -10,3 +10,6 @@ export PATH="$HOME/.nub/shims:$PATH"
 
 # ZDOTDIR=/
 . "/Users/snow/.local/share/bob/env/env.sh"
+
+
+export SSH_AUTH_SOCK="$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock"

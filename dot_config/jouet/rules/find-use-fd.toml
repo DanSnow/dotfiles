@@ -1,0 +1,17 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "find-use-fd"
+why = "`fd` is faster than `find`, respects .gitignore and has simpler syntax."
+mode = "warn"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+message = "Use `fd` instead of `find` for file searching."
+suggest = "fd PATTERN [PATH]"
+
+[rule.match]
+command = "find"
+
+[rule.examples]
+fires = ["find . -name '*.rs'", "find src -type f -name '*.ts'"]
+quiet = ["fd -e rs", "fd config src"]

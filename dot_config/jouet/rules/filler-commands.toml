@@ -1,0 +1,18 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "filler-commands"
+why = "A standalone echo or sleep creates noise without doing work: status echoes belong in the reply, and waits belong in `jouet wait` or `jouet job`."
+mode = "deny"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+message = "A standalone `echo` or `sleep` is banned (no filler/status echoes or waits). Say it in your reply; to wait for something use `jouet wait` or `jouet job start ID --http URL -- CMD`."
+
+[[rule.match]]
+command = ["echo", "sleep"]
+prints = true
+unless_with = { command = "*" }
+
+[rule.examples]
+fires = ["echo done", "sleep 5"]
+quiet = ["echo hello > out.txt", "echo hi | wc -c", "make build && echo ok", "sleep 2 && curl localhost"]

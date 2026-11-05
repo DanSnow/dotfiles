@@ -114,3 +114,10 @@ eval "$(_MARIMO_COMPLETE=zsh_source marimo)"
 export PATH="$HOME/.brv-cli/bin:$PATH"
 eval "$(/opt/homebrew/bin/zsh-patina activate)"
 eval "$(pitchfork activate zsh)"
+
+# Added by Kiri: its docker and kiri commands (kiri setup --uninstall removes this)
+case ":$PATH:" in *":$HOME/.kiri/bin:"*) ;; *) export PATH="$PATH:$HOME/.kiri/bin" ;; esac
+
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec _reset_cursor_keys
+_reset_cursor_keys() { printf '\e[?1l' }

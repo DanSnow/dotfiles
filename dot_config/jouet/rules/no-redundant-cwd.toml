@@ -1,0 +1,28 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "no-redundant-cwd"
+why = "Ban cd into the current directory and assigning it to a variable: it is already the cwd"
+mode = "deny"
+scope = "user"
+author = "user"
+created = "2026-11-24"
+script = "no-redundant-cwd.luau"
+
+[rule.examples]
+fires = [
+  "cd . && ls",
+  "cd $PWD && nub run test",
+  "cd \"$(pwd)\" && ls",
+  "ROOT=. make build",
+  "export DIR=$PWD",
+  "D=$(pwd); ls $D",
+]
+quiet = [
+  "cd src && ls",
+  "cd ..",
+  "cd",
+  "cd -",
+  "FOO=bar make build",
+  "export PATH=$PATH:/usr/local/bin",
+  "ls .",
+]

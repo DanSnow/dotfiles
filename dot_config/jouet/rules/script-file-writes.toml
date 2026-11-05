@@ -1,0 +1,31 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "script-file-writes"
+why = "A throwaway python/perl/ruby/node script that writes files never checks the text it changes; the Write/Edit tools, ast-grep and `jouet edit` do."
+mode = "deny"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+script = "script-file-writes.luau"
+suggest = "ast-grep run -p OLD -r NEW -l LANG -U"
+
+[rule.match]
+command = ["python*", "perl", "ruby", "node", "bun", "deno"]
+
+[rule.examples]
+fires = [
+  "python3 - <<'EOF'\nfrom pathlib import Path\nPath('a.txt').write_text('x')\nEOF",
+  "python3 <<'EOF'\nwith open('a.txt', 'w') as f:\n    f.write('x')\nEOF",
+  "node <<'EOF'\nrequire('fs').writeFileSync('a', 'b')\nEOF",
+  "python3 -c \"open('a.txt','w').write('x')\"",
+  "ruby -e \"File.write('a', 'b')\"",
+  "perl -pi -e 's/a/b/' f.txt",
+  "node -e \"require('fs').writeFileSync('a','b')\"",
+]
+quiet = [
+  "python3 - <<'EOF'\nprint(1 + 1)\nEOF",
+  "python3 -c \"print(1)\"",
+  "python3 script.py",
+  "node -e \"console.log(1)\"",
+  "perl -e 'print 1'",
+]

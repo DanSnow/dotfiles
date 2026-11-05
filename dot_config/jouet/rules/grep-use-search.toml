@@ -1,0 +1,24 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "grep-use-search"
+why = "Recursive grep/rg in the shell prints unbudgeted, ungrouped matches; the Grep tool or `jouet search` is bounded and grouped by function."
+mode = "warn"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+message = "Prefer the built-in Grep tool, or `jouet search PATTERN [PATHS]`, over shell `grep -r` / `rg` for searching code."
+suggest = "jouet search PATTERN [PATHS]"
+
+[[rule.match]]
+command = ["grep", "egrep", "fgrep"]
+flags = ["-r", "-R", "--recursive"]
+unless_with = { command = ["head", "tail", "wc"] }
+
+[[rule.match]]
+command = "rg"
+prints = true
+unless_with = { command = ["head", "tail", "wc"] }
+
+[rule.examples]
+fires = ["grep -rn 'foo' src", "rg 'foo' src"]
+quiet = ["git log | grep fix", "rg foo src | wc -l", "grep foo one-file.txt"]

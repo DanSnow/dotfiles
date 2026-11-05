@@ -1,0 +1,18 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "cat-heredoc-pipe"
+why = "`cat <<EOF | cmd` is a needless extra process; most commands accept the heredoc directly."
+mode = "warn"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+message = "Don't pipe `cat <<'EOF'` into a command. Give the command the here-document directly: `cmd --stdin <<'EOF' ... EOF`."
+
+[rule.match]
+command = "cat"
+max_args = 0
+with = { command = "*" }
+
+[rule.examples]
+fires = ["cat <<'EOF' | spectra new artifact foo --stdin\nbody\nEOF"]
+quiet = ["spectra new artifact foo --stdin <<'EOF'\nbody\nEOF", "cat file.txt"]

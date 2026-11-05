@@ -1,0 +1,18 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "find-root"
+why = "Searching from the filesystem root is slow, noisy and crosses unrelated mounts."
+mode = "deny"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+message = "`find /` (searching from the filesystem root) is banned; scope the search to a specific directory, e.g. `fd PATTERN ~/path`."
+suggest = "fd PATTERN DIR"
+
+[rule.match]
+command = ["find", "fd"]
+args = "/"
+
+[rule.examples]
+fires = ["find / -name '*.log'", "find / -type f"]
+quiet = ["find . -name '*.log'", "find /etc -name hosts"]

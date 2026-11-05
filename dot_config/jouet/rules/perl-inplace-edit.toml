@@ -1,0 +1,18 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "perl-inplace-edit"
+why = "Bulk edits by perl -pi never check the text they change; ast-grep and `jouet edit` are structural and fail loudly."
+mode = "warn"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+message = "Do not use perl scripts for bulk edits. Use `ast-grep run -p 'old($A)' -r 'new($A)' -l LANG -U` for structural refactors, or `jouet edit replace`."
+suggest = "ast-grep run -p 'old($A)' -r 'new($A)' -l rust -U"
+
+[rule.match]
+command = "perl"
+flags = ["-i"]
+
+[rule.examples]
+fires = ["perl -pi -e 's/a/b/' src/a.rs", "perl -i -pe 's/a/b/g' a.txt"]
+quiet = ["perl -e 'print 1'", "ast-grep run -p 'a($X)' -r 'b($X)' -l rust -U"]

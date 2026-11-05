@@ -1,0 +1,17 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "bare-true"
+why = "A bare `true` as the whole command is a no-op filler; `cmd || true` is the allowed idiom for ignoring an exit code."
+mode = "deny"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+message = "The bare `true` command as a standalone no-op is banned. Drop it; use `cmd || true` only to suppress a nonzero exit."
+
+[rule.match]
+command = "true"
+unless_with = { command = "*" }
+
+[rule.examples]
+fires = ["true"]
+quiet = ["rm -f x || true", "make test && true", "false || true"]

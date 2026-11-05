@@ -1,0 +1,27 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+# `jouet rule schema` describes every key, and `jouet rule test sed-inplace --replay`
+# runs this rule over the calls jouet's hooks have seen.
+[[rule]]
+name = "sed-inplace"
+why = "A sed -i replacement rewrites whatever matches, silently does nothing when the text is absent, and differs between BSD and GNU sed; jouet edit replace fails when the old text is not there."
+mode = "warn"
+scope = "user"
+author = "user"
+created = "2026-11-24"
+# What the agent is told, and the command to run instead, if there is one.
+message = "`sed -i` rewrites in place without telling you when nothing matched, and BSD and GNU sed take different arguments. Use `jouet edit replace PATH --old TEXT --new TEXT`, which fails when the old text is absent."
+suggest = "jouet edit replace PATH --old TEXT --new TEXT"
+
+# The calls it fires on: the program and subcommands, then anything else
+# that must hold, such as `flags = ["-f", "--force"]` or `args = ["."]`.
+[rule.match]
+command = "sed"
+flags = ["-i", "--in-place"]
+
+# Fill these in first: the rule only warns, and cannot be promoted, until
+# it passes at least one of each.
+[rule.examples]
+# Calls the rule must fire on.
+fires = ["sed -i 's/old/new/' src/a.ts", "sed -i '' 's/old/new/g' a.md b.md", "sed --in-place -e 's/x/y/' f.txt"]
+# Near misses it must leave alone.
+quiet = ["sed -n '1,20p' src/a.ts", "sed 's/old/new/' a.txt"]

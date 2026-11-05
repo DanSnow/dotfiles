@@ -1,0 +1,23 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "cat-heredoc-file-write"
+why = "Writing a file through `cat > f <<EOF` or `| tee f` bypasses the Write/Edit tools, which check what they change and show a diff."
+mode = "deny"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+message = "Writing a file via `cat`/`tee` + heredoc is blocked. Use the Write/Edit tools for a single file; for batch updates use `ast-grep run -p OLD -r NEW -l LANG -U` or `jouet edit replace`."
+suggest = "jouet edit replace PATH --old TEXT --new TEXT"
+
+[[rule.match]]
+command = "cat"
+stdout_to = "*"
+
+[[rule.match]]
+command = "tee"
+unless_args = ["/dev/null", "-"]
+with = { command = "cat" }
+
+[rule.examples]
+fires = ["cat > notes.md <<'EOF'\nhello\nEOF", "cat >> a.txt <<EOF\nx\nEOF", "cat <<'EOF' | tee out.txt\nx\nEOF"]
+quiet = ["cat file.txt", "git commit -F - <<'EOF'\nmsg\nEOF", "cat a.txt | wc -l"]

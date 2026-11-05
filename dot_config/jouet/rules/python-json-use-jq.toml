@@ -1,0 +1,18 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+[[rule]]
+name = "python-json-use-jq"
+why = "A python one-liner to read JSON costs a script per call; `jq` does it directly."
+mode = "warn"
+scope = "user"
+author = "user"
+created = "2026-11-25"
+message = "Use `jq` instead of `python3 -c \"import json...\"` for JSON extraction in shell commands."
+suggest = "jq '.path.to.field' FILE"
+
+[rule.match]
+command = ["python", "python3"]
+text = "import json|json\\.load"
+
+[rule.examples]
+fires = ["python3 -c \"import json,sys; print(json.load(sys.stdin)['a'])\"", "python -c 'import json; print(1)'"]
+quiet = ["python3 script.py", "jq .a file.json"]

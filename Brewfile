@@ -3,7 +3,7 @@ tap "appleboy/tap", trusted: true
 tap "buo/cask-upgrade", trusted: true
 tap "centrifugal/centrifugo", trusted: true
 tap "devwhodevs/tap", trusted: true
-tap "giammarco-ferranti/deja", "https://github.com/Giammarco-Ferranti/homebrew-deja"
+tap "geo-fer/deja", "https://github.com/geo-fer/homebrew-deja.git"
 tap "gromgit/brewtils"
 tap "hettysoft/tap", trusted: true
 tap "iagooar/qqqa", trusted: true
@@ -117,7 +117,6 @@ brew "exiftool"
 brew "flatbuffers"
 brew "fx"
 brew "gallery-dl"
-brew "giammarco-ferranti/deja/deja", trusted: true
 brew "git-xet"
 brew "gnupg"
 brew "graphviz"
@@ -150,7 +149,6 @@ brew "mole"
 brew "moon"
 brew "mosh"
 brew "nss"
-brew "opencode"
 brew "opentofu"
 brew "oven-sh/bun/bun", trusted: true
 brew "pandoc"
@@ -170,7 +168,6 @@ brew "resvg"
 brew "rtk"
 brew "sassman/tap/amoxide", trusted: true
 brew "sassman/tap/amoxide-tui", trusted: true
-brew "sccache"
 brew "scrcpy"
 brew "sevenzip"
 brew "snitch"
@@ -182,7 +179,6 @@ brew "telnet"
 brew "tokei"
 brew "tree-sitter-cli"
 brew "trippy"
-brew "trufflehog"
 brew "tuicr"
 brew "typos-cli"
 brew "typst"
@@ -201,6 +197,7 @@ brew "ynqa/tap/vy", trusted: true
 brew "yt-dlp"
 brew "yubico-piv-tool"
 brew "zsh-patina"
+cask "android-commandlinetools"
 cask "anytype"
 cask "audacity"
 cask "cap"
@@ -218,8 +215,8 @@ cask "font-hack-nerd-font"
 cask "font-iosevka-nerd-font"
 cask "fuse-t"
 cask "github"
+cask "gloom"
 cask "godot"
-cask "helium-browser"
 cask "herdr-app"
 cask "homebrew-app"
 cask "imageoptim"
@@ -238,7 +235,6 @@ cask "macos-fuse-t/cask/fuse-t-sshfs"
 cask "mediahuman-audio-converter"
 cask "meld"
 cask "minecraft"
-cask "mole-app"
 cask "monitorcontrol"
 cask "muxy-app/tap/muxy", trusted: true
 cask "neodisk"
@@ -250,7 +246,6 @@ cask "opal-app"
 cask "openineditor-lite"
 cask "openinterminal-lite"
 cask "orbstack"
-cask "osaurus"
 cask "raycast"
 cask "selfcontrol"
 cask "shortcat"
@@ -265,11 +260,9 @@ cask "synology-drive"
 cask "tabularis"
 cask "tad"
 cask "telegram"
-cask "temurin"
 cask "vagrant"
 cask "veracrypt-fuse-t"
 cask "vivaldi"
-cask "wailbrew"
 cask "zoom"
 
 mas "DaisyDisk", id: 411643860
@@ -279,11 +272,9 @@ mas "LocalSend", id: 1661733229
 mas "Numbers", id: 361304891
 mas "Pages", id: 409201541
 mas "Pets Therapy", id: 1575542220
-mas "Red Lines Tools", id: 1469400117
 mas "RunCatNeo", id: 6757801838
 mas "Saber", id: 1671523739
 mas "ScreenBrush", id: 1233965871
-mas "Shareful", id: 1522267256
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650
@@ -306,9 +297,11 @@ vscode "fill-labs.dependi"
 vscode "geequlim.godot-tools"
 vscode "github.vscode-github-actions"
 vscode "inlang.vs-code-extension"
+vscode "jetbrains.kotlin-server"
 vscode "jock.svg"
 vscode "julianiaquinandi.nvim-ui-modifier"
 vscode "kewang.spek-vscode"
+vscode "leanprover.lean4"
 vscode "lokalise.i18n-ally"
 vscode "matthewpi.caddyfile-support"
 vscode "monokai.theme-monokai-pro-vscode"

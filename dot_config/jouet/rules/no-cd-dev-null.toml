@@ -1,0 +1,20 @@
+#:schema https://jouet.jdx.dev/schema/rules.json
+# `jouet rule schema` describes every key, and `jouet rule test no-cd-dev-null --replay`
+# runs this rule over the calls jouet's hooks have seen.
+[[rule]]
+name = "no-cd-dev-null"
+why = "cd /dev/null always fails (not a directory) and aborts the command chain; it is never what is intended."
+mode = "deny"
+scope = "user"
+author = "user"
+created = "2026-11-24"
+message = "`cd /dev/null` always fails because /dev/null is not a directory. Don't cd; use absolute paths instead."
+suggest = "use absolute paths instead of cd"
+
+[rule.match]
+command = "cd"
+args = ["/dev/null"]
+
+[rule.examples]
+fires = ["cd /dev/null", "cd /dev/null && ls", "ls && cd /dev/null"]
+quiet = ["cd /tmp", "ls /dev/null", "echo hi > /dev/null"]
